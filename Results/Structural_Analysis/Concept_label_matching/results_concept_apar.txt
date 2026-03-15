@@ -1,0 +1,35 @@
+sequence_match
+[{'pred': 'electric vehicle', 'ground': 'vehicle', 'sim': 0.609}, {'pred': 'loading and unloading permit', 'ground': 'permit', 'sim': 0.353}, {'pred': 'location type', 'ground': 'organization', 'sim': 0.48}, {'pred': 'motorcycle', 'ground': 'vehicle', 'sim': 0.353}, {'pred': 'off street', 'ground': 'conceptscheme', 'sim': 0.348}, {'pred': 'on street', 'ground': 'conceptscheme', 'sim': 0.455}, {'pred': 'pmr vehicle', 'ground': 'vehicle', 'sim': 0.778}, {'pred': 'parking lot', 'ground': 'permit', 'sim': 0.471}, {'pred': 'permit', 'ground': 'permit', 'sim': 1.0}, {'pred': 'rate', 'ground': 'tramo', 'sim': 0.444}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'resident permit', 'ground': 'permit', 'sim': 0.571}, {'pred': 'spot group', 'ground': 'organization', 'sim': 0.273}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.737}]
+TP=6.273, FP=6.128000000000001, FN=3.727
+Precision: 0.5058463027175227
+Recall:    0.6273
+Accuracy:  0.6273
+F1-score:  0.5600642828445158
+levenshtein
+[{'pred': 'electric vehicle', 'ground': 'vehicle', 'sim': 0.438}, {'pred': 'loading and unloading permit', 'ground': 'permit', 'sim': 0.214}, {'pred': 'location type', 'ground': 'concept', 'sim': 0.308}, {'pred': 'motorcycle', 'ground': 'vehicle', 'sim': 0.3}, {'pred': 'off street', 'ground': 'conceptscheme', 'sim': 0.231}, {'pred': 'on street', 'ground': 'concept', 'sim': 0.333}, {'pred': 'pmr vehicle', 'ground': 'vehicle', 'sim': 0.636}, {'pred': 'parking lot', 'ground': 'permit', 'sim': 0.364}, {'pred': 'permit', 'ground': 'permit', 'sim': 1.0}, {'pred': 'rate', 'ground': 'tramo', 'sim': 0.4}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'resident permit', 'ground': 'permit', 'sim': 0.4}, {'pred': 'spot group', 'ground': 'tramo', 'sim': 0.2}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.583}]
+TP=5.285, FP=7.592999999999999, FN=4.715
+Precision: 0.41038981208262154
+Recall:    0.5285
+Accuracy:  0.5285
+F1-score:  0.46201591048168544
+jaro_winkler
+[{'pred': 'electric vehicle', 'ground': 'conceptscheme', 'sim': 0.622}, {'pred': 'loading and unloading permit', 'ground': 'organization', 'sim': 0.616}, {'pred': 'location type', 'ground': 'organization', 'sim': 0.598}, {'pred': 'motorcycle', 'ground': 'vehicle', 'sim': 0.576}, {'pred': 'off street', 'ground': 'conceptscheme', 'sim': 0.562}, {'pred': 'on street', 'ground': 'owner', 'sim': 0.665}, {'pred': 'pmr vehicle', 'ground': 'vehicle', 'sim': 0.879}, {'pred': 'parking lot', 'ground': 'organization', 'sim': 0.597}, {'pred': 'permit', 'ground': 'permit', 'sim': 1.0}, {'pred': 'rate', 'ground': 'regulated zone', 'sim': 0.679}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'resident permit', 'ground': 'regulated zone', 'sim': 0.618}, {'pred': 'spot group', 'ground': 'organization', 'sim': 0.572}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.917}]
+TP=7.689, FP=4.099, FN=2.311
+Precision: 0.6522734984730234
+Recall:    0.7689
+Accuracy:  0.7689
+F1-score:  0.7058013585459887
+TP=2, FP=12, FN=7, TN=24
+Precision: 0.14285714285714285
+Recall:    0.2222222222222222
+Accuracy:  0.5777777777777777
+F1-score:  0.17391304347826086
+semantic
+[{'pred': 'electric vehicle', 'ground': 'vehicle', 'sim': 0.819}, {'pred': 'loading and unloading permit', 'ground': 'permit', 'sim': 0.771}, {'pred': 'location type', 'ground': 'vehicle', 'sim': 0.517}, {'pred': 'motorcycle', 'ground': 'vehicle', 'sim': 0.771}, {'pred': 'off street', 'ground': 'tramo', 'sim': 0.581}, {'pred': 'on street', 'ground': 'tramo', 'sim': 0.585}, {'pred': 'pmr vehicle', 'ground': 'vehicle', 'sim': 0.831}, {'pred': 'parking lot', 'ground': 'vehicle', 'sim': 0.649}, {'pred': 'permit', 'ground': 'permit', 'sim': 1.0}, {'pred': 'rate', 'ground': 'vehicle', 'sim': 0.5}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'resident permit', 'ground': 'permit', 'sim': 0.846}, {'pred': 'spot group', 'ground': 'vehicle', 'sim': 0.543}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.826}]
+TP=6.991, FP=3.7609999999999997, FN=3.009
+Precision: 0.6502046130952381
+Recall:    0.6990999999999999
+Accuracy:  0.6990999999999999
+F1-score:  0.6737663839629915
+{'hard_match': {'coverage_rate': 0.2, 'precision': 0.14285714285714285, 'recall': 0.2222222222222222, 'accuracy': 0.09523809523809523, 'f1': 0.17391304347826086}, 'sequence_match': {'coverage_rate': 0.6273, 'precision': 0.5058463027175227, 'recall': 0.6273, 'accuracy': 0.6273, 'f1': 0.5600642828445158}, 'levenshtein': {'coverage_rate': 0.5285, 'precision': 0.41038981208262154, 'recall': 0.5285, 'accuracy': 0.5285, 'f1': 0.46201591048168544}, 'jaro_winkler': {'coverage_rate': 0.7689, 'precision': 0.6522734984730234, 'recall': 0.7689, 'accuracy': 0.7689, 'f1': 0.7058013585459887}, 'synonym': {'coverage_rate': 0.06060606060606061, 'precision': 0.14285714285714285, 'recall': 0.2222222222222222, 'accuracy': 0.5777777777777777, 'f1': 0.17391304347826086}, 'semantic_embeddinggemma': {'coverage_rate': 0.6990999999999999, 'precision': 0.6502046130952381, 'recall': 0.6990999999999999, 'accuracy': 0.6990999999999999, 'f1': 0.6737663839629915}}
+(autocltemp) ljymacbook@ljydeMacBook-Pro APAR % 

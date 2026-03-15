@@ -1,0 +1,35 @@
+sequence_match
+[{'pred': 'authorization', 'ground': 'organization', 'sim': 0.72}, {'pred': 'authorization type', 'ground': 'organization', 'sim': 0.6}, {'pred': 'economic interest zone', 'ground': 'regulated zone', 'sim': 0.444}, {'pred': 'environmental badge', 'ground': 'person', 'sim': 0.32}, {'pred': 'historical case zone', 'ground': 'regulated zone', 'sim': 0.412}, {'pred': 'low emission zone', 'ground': 'regulated zone', 'sim': 0.452}, {'pred': 'organization', 'ground': 'organization', 'sim': 1.0}, {'pred': 'owner', 'ground': 'owner', 'sim': 1.0}, {'pred': 'parking zone', 'ground': 'regulated zone', 'sim': 0.462}, {'pred': 'person', 'ground': 'person', 'sim': 1.0}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'road', 'ground': 'tramo', 'sim': 0.444}, {'pred': 'road segment', 'ground': 'conceptscheme', 'sim': 0.4}, {'pred': 'vehicle', 'ground': 'vehicle', 'sim': 1.0}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.737}]
+TP=7.844, FP=5.009, FN=2.156
+Precision: 0.610285536450634
+Recall:    0.7844
+Accuracy:  0.7844
+F1-score:  0.6864744234892574
+levenshtein
+[{'pred': 'authorization', 'ground': 'organization', 'sim': 0.538}, {'pred': 'authorization type', 'ground': 'organization', 'sim': 0.389}, {'pred': 'economic interest zone', 'ground': 'regulated zone', 'sim': 0.318}, {'pred': 'environmental badge', 'ground': 'conceptscheme', 'sim': 0.263}, {'pred': 'historical case zone', 'ground': 'regulated zone', 'sim': 0.4}, {'pred': 'low emission zone', 'ground': 'regulated zone', 'sim': 0.353}, {'pred': 'organization', 'ground': 'organization', 'sim': 1.0}, {'pred': 'owner', 'ground': 'owner', 'sim': 1.0}, {'pred': 'parking zone', 'ground': 'regulated zone', 'sim': 0.357}, {'pred': 'person', 'ground': 'person', 'sim': 1.0}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'road', 'ground': 'regulated zone', 'sim': 0.214}, {'pred': 'road segment', 'ground': 'permit', 'sim': 0.25}, {'pred': 'vehicle', 'ground': 'vehicle', 'sim': 1.0}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.583}]
+TP=7.411999999999999, FP=6.334999999999999, FN=2.588
+Precision: 0.5391721830217502
+Recall:    0.7411999999999999
+Accuracy:  0.7411999999999999
+F1-score:  0.6242472733397902
+jaro_winkler
+[{'pred': 'authorization', 'ground': 'organization', 'sim': 0.834}, {'pred': 'authorization type', 'ground': 'organization', 'sim': 0.696}, {'pred': 'economic interest zone', 'ground': 'permit', 'sim': 0.616}, {'pred': 'environmental badge', 'ground': 'regulated zone', 'sim': 0.637}, {'pred': 'historical case zone', 'ground': 'vehicle', 'sim': 0.655}, {'pred': 'low emission zone', 'ground': 'owner', 'sim': 0.592}, {'pred': 'organization', 'ground': 'organization', 'sim': 1.0}, {'pred': 'owner', 'ground': 'owner', 'sim': 1.0}, {'pred': 'parking zone', 'ground': 'organization', 'sim': 0.694}, {'pred': 'person', 'ground': 'person', 'sim': 1.0}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'road', 'ground': 'regulated zone', 'sim': 0.655}, {'pred': 'road segment', 'ground': 'person', 'sim': 0.683}, {'pred': 'vehicle', 'ground': 'vehicle', 'sim': 1.0}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.917}]
+TP=8.586, FP=3.021000000000001, FN=1.4140000000000001
+Precision: 0.7397260273972602
+Recall:    0.8586
+Accuracy:  0.8586
+F1-score:  0.794742444578146
+TP=5, FP=10, FN=4, TN=24
+Precision: 0.3333333333333333
+Recall:    0.5555555555555556
+Accuracy:  0.6744186046511628
+F1-score:  0.4166666666666667
+semantic
+[{'pred': 'authorization', 'ground': 'permit', 'sim': 0.729}, {'pred': 'authorization type', 'ground': 'permit', 'sim': 0.581}, {'pred': 'economic interest zone', 'ground': 'regulated zone', 'sim': 0.687}, {'pred': 'environmental badge', 'ground': 'vehicle', 'sim': 0.527}, {'pred': 'historical case zone', 'ground': 'regulated zone', 'sim': 0.637}, {'pred': 'low emission zone', 'ground': 'regulated zone', 'sim': 0.7}, {'pred': 'organization', 'ground': 'organization', 'sim': 1.0}, {'pred': 'owner', 'ground': 'owner', 'sim': 1.0}, {'pred': 'parking zone', 'ground': 'regulated zone', 'sim': 0.666}, {'pred': 'person', 'ground': 'person', 'sim': 1.0}, {'pred': 'regulated zone', 'ground': 'regulated zone', 'sim': 1.0}, {'pred': 'road', 'ground': 'vehicle', 'sim': 0.714}, {'pred': 'road segment', 'ground': 'vehicle', 'sim': 0.615}, {'pred': 'vehicle', 'ground': 'vehicle', 'sim': 1.0}, {'pred': 'vehicle type', 'ground': 'vehicle', 'sim': 0.826}]
+TP=8.474, FP=3.318, FN=1.526
+Precision: 0.7186227951153324
+Recall:    0.8474
+Accuracy:  0.8474
+F1-score:  0.7777165932452277
+{'hard_match': {'coverage_rate': 0.5, 'precision': 0.3333333333333333, 'recall': 0.5555555555555556, 'accuracy': 0.2631578947368421, 'f1': 0.4166666666666667}, 'sequence_match': {'coverage_rate': 0.7844, 'precision': 0.610285536450634, 'recall': 0.7844, 'accuracy': 0.7844, 'f1': 0.6864744234892574}, 'levenshtein': {'coverage_rate': 0.7411999999999999, 'precision': 0.5391721830217502, 'recall': 0.7411999999999999, 'accuracy': 0.7411999999999999, 'f1': 0.6242472733397902}, 'jaro_winkler': {'coverage_rate': 0.8586, 'precision': 0.7397260273972602, 'recall': 0.8586, 'accuracy': 0.8586, 'f1': 0.794742444578146}, 'synonym': {'coverage_rate': 0.15151515151515152, 'precision': 0.3333333333333333, 'recall': 0.5555555555555556, 'accuracy': 0.6744186046511628, 'f1': 0.4166666666666667}, 'semantic_embeddinggemma': {'coverage_rate': 0.8474, 'precision': 0.7186227951153324, 'recall': 0.8474, 'accuracy': 0.8474, 'f1': 0.7777165932452277}}
+(autocltemp) ljymacbook@ljydeMacBook-Pro CSO % 
