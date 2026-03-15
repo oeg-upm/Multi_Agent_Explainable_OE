@@ -1,0 +1,1903 @@
+running index: 1
+=== NEON-GPT Workflow ===
+Loading competency questions...
+Executing NEON workflow:
+Step 1: Generating initial ontology draft...
+Initial ontologyn draft:
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
+  <rdfs:comment>A person who plays games.</rdfs:comment>
+  <rdfs:label>Player</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player? Who are the friends of the player? Who are the friends that play other games as well with this player? Who are the most active players in the game? What are the achievements of my friends? Who does the player play with? What achievements has a player obtained? What games has the player played? What items does the player have? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement? What is the last game a player has played? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? When was the last time a certain player played this game? In how many games does the player have all the achievements? What is the favorite map of the player in the game? What is the most played map in a game? What is the difficulty level the player uses in certain game genres? How many times have I killed someone in a game? How many goals did I score in FIFA 15? How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live? How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Game">
+  <rdfs:comment>A video game or similar interactive entertainment.</rdfs:comment>
+  <rdfs:label>Game</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one? List all games of a certain Genre? What achievements does a game have? How many hours has this game been played in total? What are the types of achievements in this game? What is the genre of the game? What items exist in a game? Who is the creator of the game? What is the release date of the game? What is the most played map in a game? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What type of weapon are players using who win mostly in the game? How many players have moved from game to another when they have seen a linked commercial? What are the games where a player can use this item? How many players have made in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Achievement">
+  <rdfs:comment>An accomplishment or milestone in a game.</rdfs:comment>
+  <rdfs:label>Achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements does a game have? What are the types of achievements in this game? What achievements has a player obtained? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Item">
+  <rdfs:comment>An object or equipment in a game, such as a weapon, car, or consumable.</rdfs:comment>
+  <rdfs:label>Item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What type is the item of? What abilities does an item have? What is the fastest car in the game? How much damage does a weapon deal? What items does the player have? How big percentage of players have a certain item in the game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? What is the most crafted item in the game? What equipment does a player have in a game? What consumable items does a player have in game? What is the most used item in the game? What are the games where a player can use this item? How big percentage of players use the item in question in other linked games? What type of items are the most traded ones in the game's marketplace?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Genre">
+  <rdfs:comment>A category or style of games, such as action, RPG, or sports.</rdfs:comment>
+  <rdfs:label>Genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre? What are the most common genres played by players with a certain character class in a game?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Map">
+  <rdfs:comment>A level or environment in a game.</rdfs:comment>
+  <rdfs:label>Map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game? What is the location in map where the players die the most?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ActionEvent">
+  <rdfs:comment>An action or event that occurs in a game, such as killing, scoring, or crafting.</rdfs:comment>
+  <rdfs:label>Action Event</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many times have I killed someone in a game? How many goals did I score in FIFA 15? What is the first action done by the player after an event? How many times players have died in a level?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#InAppPurchase">
+  <rdfs:comment>A purchase made within a game for virtual goods or services.</rdfs:comment>
+  <rdfs:label>In-App Purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Advertisement">
+  <rdfs:comment>An advertisement shown within or linked to a game.</rdfs:comment>
+  <rdfs:label>Advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement? How many players have moved from game to another when they have seen a linked commercial?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Location">
+  <rdfs:comment>A geographical location where players live.</rdfs:comment>
+  <rdfs:label>Location</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#CharacterClass">
+  <rdfs:comment>A character class or role in a game, such as warrior, mage, or assassin.</rdfs:comment>
+  <rdfs:label>Character Class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#AchievementType">
+  <rdfs:comment>A type or category of achievements, such as combat, exploration, or collection.</rdfs:comment>
+  <rdfs:label>Achievement Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What are the types of achievements a game can have? What achievements of a certain type does the player have?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ItemType">
+  <rdfs:comment>A type or category of items, such as weapon, vehicle, consumable, or equipment.</rdfs:comment>
+  <rdfs:label>Item Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game? What type of items are the most traded ones in the game's marketplace?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFriend">
+  <rdfs:comment>Specifies that a player has another player as a friend.</rdfs:comment>
+  <rdfs:label>has friend</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who are the friends of the player? Who are the friends that play other games as well with this player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#plays">
+  <rdfs:comment>Specifies that a player plays a game.</rdfs:comment>
+  <rdfs:label>plays</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who does the player play with? What games has the player played? What is the last game a player has played? When was the last time a certain player played this game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasAchievement">
+  <rdfs:comment>Specifies that a player has obtained an achievement.</rdfs:comment>
+  <rdfs:label>player has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements has a player obtained? What achievements of a certain type does the player have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasAchievement">
+  <rdfs:comment>Specifies that a game has available achievements.</rdfs:comment>
+  <rdfs:label>game has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What achievements does a game have? What are the types of achievements in this game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasItem">
+  <rdfs:comment>Specifies that a player possesses an item.</rdfs:comment>
+  <rdfs:label>player has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items does the player have? What equipment does a player have in a game? What consumable items does a player have in game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasItem">
+  <rdfs:comment>Specifies that a game contains items.</rdfs:comment>
+  <rdfs:label>game has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What are the games where a player can use this item?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGenre">
+  <rdfs:comment>Specifies the genre of a game.</rdfs:comment>
+  <rdfs:label>has genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasMap">
+  <rdfs:comment>Specifies that a game has maps.</rdfs:comment>
+  <rdfs:label>has map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Map"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#createdBy">
+  <rdfs:comment>Specifies the creator of a game.</rdfs:comment>
+  <rdfs:label>created by</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who is the creator of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#similarTo">
+  <rdfs:comment>Specifies that a game is similar to another game.</rdfs:comment>
+  <rdfs:label>similar to</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesItem">
+  <rdfs:comment>Specifies that a player uses an item in a game.</rdfs:comment>
+  <rdfs:label>uses item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type of weapon are players using who win mostly in the game? After gaining an item in the game, how many players use it? How big percentage of players use the item in question in other linked games?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#madePurchase">
+  <rdfs:comment>Specifies that a player made an in-app purchase.</rdfs:comment>
+  <rdfs:label>made purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#sawAdvertisement">
+  <rdfs:comment>Specifies that a player saw an advertisement.</rdfs:comment>
+  <rdfs:label>saw advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Advertisement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#livesIn">
+  <rdfs:comment>Specifies the location where a player lives.</rdfs:comment>
+  <rdfs:label>lives in</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCharacterClass">
+  <rdfs:comment>Specifies the character class of a player in a game.</rdfs:comment>
+  <rdfs:label>has character class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#CharacterClass"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAchievementType">
+  <rdfs:comment>Specifies the type of an achievement.</rdfs:comment>
+  <rdfs:label>has achievement type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What achievements of a certain type does the player have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasItemType">
+  <rdfs:comment>Specifies the type of an item.</rdfs:comment>
+  <rdfs:label>has item type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ItemType"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasUsername">
+  <rdfs:comment>The username of a player.</rdfs:comment>
+  <rdfs:label>has username</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasReleaseDate">
+  <rdfs:comment>The release date of a game.</rdfs:comment>
+  <rdfs:label>has release date</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the release date of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasTotalPlayTime">
+  <rdfs:comment>The total hours a game has been played.</rdfs:comment>
+  <rdfs:label>has total play time</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many hours has this game been played in total?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDamage">
+  <rdfs:comment>The damage dealt by a weapon item.</rdfs:comment>
+  <rdfs:label>has damage</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much damage does a weapon deal?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSpeed">
+  <rdfs:comment>The speed of a vehicle item.</rdfs:comment>
+  <rdfs:label>has speed</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the fastest car in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAbilities">
+  <rdfs:comment>The abilities or effects of an item.</rdfs:comment>
+  <rdfs:label>has abilities</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What abilities does an item have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasKillCount">
+  <rdfs:comment>The number of kills a player has in a game.</rdfs:comment>
+  <rdfs:label>has kill count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who has the best kill count in the game? How many times have I killed someone in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasGoalCount">
+  <rdfs:comment>The number of goals a player has scored in a game.</rdfs:comment>
+  <rdfs:label>has goal count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many goals did I score in FIFA 15?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasMoneySpent">
+  <rdfs:comment>The amount of money a player has spent on in-app purchases.</rdfs:comment>
+  <rdfs:label>has money spent</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much money an average player spends in in app purchases?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+Syntax validation passed
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
+  <rdfs:comment>A person who plays games.</rdfs:comment>
+  <rdfs:label>Player</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player? Who are the friends of the player? Who are the friends that play other games as well with this player? Who are the most active players in the game? What are the achievements of my friends? Who does the player play with? What achievements has a player obtained? What games has the player played? What items does the player have? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement? What is the last game a player has played? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? When was the last time a certain player played this game? In how many games does the player have all the achievements? What is the favorite map of the player in the game? What is the most played map in a game? What is the difficulty level the player uses in certain game genres? How many times have I killed someone in a game? How many goals did I score in FIFA 15? How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live? How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Game">
+  <rdfs:comment>A video game or similar interactive entertainment.</rdfs:comment>
+  <rdfs:label>Game</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one? List all games of a certain Genre? What achievements does a game have? How many hours has this game been played in total? What are the types of achievements in this game? What is the genre of the game? What items exist in a game? Who is the creator of the game? What is the release date of the game? What is the most played map in a game? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What type of weapon are players using who win mostly in the game? How many players have moved from game to another when they have seen a linked commercial? What are the games where a player can use this item? How many players have made in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Achievement">
+  <rdfs:comment>An accomplishment or milestone in a game.</rdfs:comment>
+  <rdfs:label>Achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements does a game have? What are the types of achievements in this game? What achievements has a player obtained? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Item">
+  <rdfs:comment>An object or equipment in a game, such as a weapon, car, or consumable.</rdfs:comment>
+  <rdfs:label>Item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What type is the item of? What abilities does an item have? What is the fastest car in the game? How much damage does a weapon deal? What items does the player have? How big percentage of players have a certain item in the game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? What is the most crafted item in the game? What equipment does a player have in a game? What consumable items does a player have in game? What is the most used item in the game? What are the games where a player can use this item? How big percentage of players use the item in question in other linked games? What type of items are the most traded ones in the game's marketplace?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Genre">
+  <rdfs:comment>A category or style of games, such as action, RPG, or sports.</rdfs:comment>
+  <rdfs:label>Genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre? What are the most common genres played by players with a certain character class in a game?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Map">
+  <rdfs:comment>A level or environment in a game.</rdfs:comment>
+  <rdfs:label>Map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game? What is the location in map where the players die the most?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ActionEvent">
+  <rdfs:comment>An action or event that occurs in a game, such as killing, scoring, or crafting.</rdfs:comment>
+  <rdfs:label>Action Event</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many times have I killed someone in a game? How many goals did I score in FIFA 15? What is the first action done by the player after an event? How many times players have died in a level?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#InAppPurchase">
+  <rdfs:comment>A purchase made within a game for virtual goods or services.</rdfs:comment>
+  <rdfs:label>In-App Purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Advertisement">
+  <rdfs:comment>An advertisement shown within or linked to a game.</rdfs:comment>
+  <rdfs:label>Advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement? How many players have moved from game to another when they have seen a linked commercial?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Location">
+  <rdfs:comment>A geographical location where players live.</rdfs:comment>
+  <rdfs:label>Location</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#CharacterClass">
+  <rdfs:comment>A character class or role in a game, such as warrior, mage, or assassin.</rdfs:comment>
+  <rdfs:label>Character Class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#AchievementType">
+  <rdfs:comment>A type or category of achievements, such as combat, exploration, or collection.</rdfs:comment>
+  <rdfs:label>Achievement Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What are the types of achievements a game can have? What achievements of a certain type does the player have?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ItemType">
+  <rdfs:comment>A type or category of items, such as weapon, vehicle, consumable, or equipment.</rdfs:comment>
+  <rdfs:label>Item Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game? What type of items are the most traded ones in the game's marketplace?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFriend">
+  <rdfs:comment>Specifies that a player has another player as a friend.</rdfs:comment>
+  <rdfs:label>has friend</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who are the friends of the player? Who are the friends that play other games as well with this player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#plays">
+  <rdfs:comment>Specifies that a player plays a game.</rdfs:comment>
+  <rdfs:label>plays</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who does the player play with? What games has the player played? What is the last game a player has played? When was the last time a certain player played this game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasAchievement">
+  <rdfs:comment>Specifies that a player has obtained an achievement.</rdfs:comment>
+  <rdfs:label>player has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements has a player obtained? What achievements of a certain type does the player have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasAchievement">
+  <rdfs:comment>Specifies that a game has available achievements.</rdfs:comment>
+  <rdfs:label>game has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What achievements does a game have? What are the types of achievements in this game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasItem">
+  <rdfs:comment>Specifies that a player possesses an item.</rdfs:comment>
+  <rdfs:label>player has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items does the player have? What equipment does a player have in a game? What consumable items does a player have in game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasItem">
+  <rdfs:comment>Specifies that a game contains items.</rdfs:comment>
+  <rdfs:label>game has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What are the games where a player can use this item?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGenre">
+  <rdfs:comment>Specifies the genre of a game.</rdfs:comment>
+  <rdfs:label>has genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasMap">
+  <rdfs:comment>Specifies that a game has maps.</rdfs:comment>
+  <rdfs:label>has map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Map"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#createdBy">
+  <rdfs:comment>Specifies the creator of a game.</rdfs:comment>
+  <rdfs:label>created by</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who is the creator of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#similarTo">
+  <rdfs:comment>Specifies that a game is similar to another game.</rdfs:comment>
+  <rdfs:label>similar to</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesItem">
+  <rdfs:comment>Specifies that a player uses an item in a game.</rdfs:comment>
+  <rdfs:label>uses item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type of weapon are players using who win mostly in the game? After gaining an item in the game, how many players use it? How big percentage of players use the item in question in other linked games?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#madePurchase">
+  <rdfs:comment>Specifies that a player made an in-app purchase.</rdfs:comment>
+  <rdfs:label>made purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#sawAdvertisement">
+  <rdfs:comment>Specifies that a player saw an advertisement.</rdfs:comment>
+  <rdfs:label>saw advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Advertisement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#livesIn">
+  <rdfs:comment>Specifies the location where a player lives.</rdfs:comment>
+  <rdfs:label>lives in</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCharacterClass">
+  <rdfs:comment>Specifies the character class of a player in a game.</rdfs:comment>
+  <rdfs:label>has character class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#CharacterClass"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAchievementType">
+  <rdfs:comment>Specifies the type of an achievement.</rdfs:comment>
+  <rdfs:label>has achievement type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What achievements of a certain type does the player have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasItemType">
+  <rdfs:comment>Specifies the type of an item.</rdfs:comment>
+  <rdfs:label>has item type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ItemType"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasUsername">
+  <rdfs:comment>The username of a player.</rdfs:comment>
+  <rdfs:label>has username</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasReleaseDate">
+  <rdfs:comment>The release date of a game.</rdfs:comment>
+  <rdfs:label>has release date</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the release date of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasTotalPlayTime">
+  <rdfs:comment>The total hours a game has been played.</rdfs:comment>
+  <rdfs:label>has total play time</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many hours has this game been played in total?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDamage">
+  <rdfs:comment>The damage dealt by a weapon item.</rdfs:comment>
+  <rdfs:label>has damage</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much damage does a weapon deal?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSpeed">
+  <rdfs:comment>The speed of a vehicle item.</rdfs:comment>
+  <rdfs:label>has speed</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the fastest car in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAbilities">
+  <rdfs:comment>The abilities or effects of an item.</rdfs:comment>
+  <rdfs:label>has abilities</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What abilities does an item have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasKillCount">
+  <rdfs:comment>The number of kills a player has in a game.</rdfs:comment>
+  <rdfs:label>has kill count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who has the best kill count in the game? How many times have I killed someone in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasGoalCount">
+  <rdfs:comment>The number of goals a player has scored in a game.</rdfs:comment>
+  <rdfs:label>has goal count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many goals did I score in FIFA 15?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasMoneySpent">
+  <rdfs:comment>The amount of money a player has spent on in-app purchases.</rdfs:comment>
+  <rdfs:label>has money spent</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much money an average player spends in in app purchases?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+Step 2: Consistency checking with Hermit...
+Syntax validation passed
+Consistency checking passed
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
+  <rdfs:comment>A person who plays games.</rdfs:comment>
+  <rdfs:label>Player</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player? Who are the friends of the player? Who are the friends that play other games as well with this player? Who are the most active players in the game? What are the achievements of my friends? Who does the player play with? What achievements has a player obtained? What games has the player played? What items does the player have? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement? What is the last game a player has played? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? When was the last time a certain player played this game? In how many games does the player have all the achievements? What is the favorite map of the player in the game? What is the most played map in a game? What is the difficulty level the player uses in certain game genres? How many times have I killed someone in a game? How many goals did I score in FIFA 15? How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live? How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Game">
+  <rdfs:comment>A video game or similar interactive entertainment.</rdfs:comment>
+  <rdfs:label>Game</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one? List all games of a certain Genre? What achievements does a game have? How many hours has this game been played in total? What are the types of achievements in this game? What is the genre of the game? What items exist in a game? Who is the creator of the game? What is the release date of the game? What is the most played map in a game? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What type of weapon are players using who win mostly in the game? How many players have moved from game to another when they have seen a linked commercial? What are the games where a player can use this item? How many players have made in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Achievement">
+  <rdfs:comment>An accomplishment or milestone in a game.</rdfs:comment>
+  <rdfs:label>Achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements does a game have? What are the types of achievements in this game? What achievements has a player obtained? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Item">
+  <rdfs:comment>An object or equipment in a game, such as a weapon, car, or consumable.</rdfs:comment>
+  <rdfs:label>Item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What type is the item of? What abilities does an item have? What is the fastest car in the game? How much damage does a weapon deal? What items does the player have? How big percentage of players have a certain item in the game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? What is the most crafted item in the game? What equipment does a player have in a game? What consumable items does a player have in game? What is the most used item in the game? What are the games where a player can use this item? How big percentage of players use the item in question in other linked games? What type of items are the most traded ones in the game's marketplace?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Genre">
+  <rdfs:comment>A category or style of games, such as action, RPG, or sports.</rdfs:comment>
+  <rdfs:label>Genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre? What are the most common genres played by players with a certain character class in a game?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Map">
+  <rdfs:comment>A level or environment in a game.</rdfs:comment>
+  <rdfs:label>Map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game? What is the location in map where the players die the most?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ActionEvent">
+  <rdfs:comment>An action or event that occurs in a game, such as killing, scoring, or crafting.</rdfs:comment>
+  <rdfs:label>Action Event</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many times have I killed someone in a game? How many goals did I score in FIFA 15? What is the first action done by the player after an event? How many times players have died in a level?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#InAppPurchase">
+  <rdfs:comment>A purchase made within a game for virtual goods or services.</rdfs:comment>
+  <rdfs:label>In-App Purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Advertisement">
+  <rdfs:comment>An advertisement shown within or linked to a game.</rdfs:comment>
+  <rdfs:label>Advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement? How many players have moved from game to another when they have seen a linked commercial?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Location">
+  <rdfs:comment>A geographical location where players live.</rdfs:comment>
+  <rdfs:label>Location</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#CharacterClass">
+  <rdfs:comment>A character class or role in a game, such as warrior, mage, or assassin.</rdfs:comment>
+  <rdfs:label>Character Class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#AchievementType">
+  <rdfs:comment>A type or category of achievements, such as combat, exploration, or collection.</rdfs:comment>
+  <rdfs:label>Achievement Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What are the types of achievements a game can have? What achievements of a certain type does the player have?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ItemType">
+  <rdfs:comment>A type or category of items, such as weapon, vehicle, consumable, or equipment.</rdfs:comment>
+  <rdfs:label>Item Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game? What type of items are the most traded ones in the game's marketplace?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFriend">
+  <rdfs:comment>Specifies that a player has another player as a friend.</rdfs:comment>
+  <rdfs:label>has friend</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who are the friends of the player? Who are the friends that play other games as well with this player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#plays">
+  <rdfs:comment>Specifies that a player plays a game.</rdfs:comment>
+  <rdfs:label>plays</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who does the player play with? What games has the player played? What is the last game a player has played? When was the last time a certain player played this game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasAchievement">
+  <rdfs:comment>Specifies that a player has obtained an achievement.</rdfs:comment>
+  <rdfs:label>player has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements has a player obtained? What achievements of a certain type does the player have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasAchievement">
+  <rdfs:comment>Specifies that a game has available achievements.</rdfs:comment>
+  <rdfs:label>game has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What achievements does a game have? What are the types of achievements in this game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasItem">
+  <rdfs:comment>Specifies that a player possesses an item.</rdfs:comment>
+  <rdfs:label>player has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items does the player have? What equipment does a player have in a game? What consumable items does a player have in game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasItem">
+  <rdfs:comment>Specifies that a game contains items.</rdfs:comment>
+  <rdfs:label>game has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What are the games where a player can use this item?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGenre">
+  <rdfs:comment>Specifies the genre of a game.</rdfs:comment>
+  <rdfs:label>has genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasMap">
+  <rdfs:comment>Specifies that a game has maps.</rdfs:comment>
+  <rdfs:label>has map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Map"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#createdBy">
+  <rdfs:comment>Specifies the creator of a game.</rdfs:comment>
+  <rdfs:label>created by</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who is the creator of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#similarTo">
+  <rdfs:comment>Specifies that a game is similar to another game.</rdfs:comment>
+  <rdfs:label>similar to</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesItem">
+  <rdfs:comment>Specifies that a player uses an item in a game.</rdfs:comment>
+  <rdfs:label>uses item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type of weapon are players using who win mostly in the game? After gaining an item in the game, how many players use it? How big percentage of players use the item in question in other linked games?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#madePurchase">
+  <rdfs:comment>Specifies that a player made an in-app purchase.</rdfs:comment>
+  <rdfs:label>made purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#sawAdvertisement">
+  <rdfs:comment>Specifies that a player saw an advertisement.</rdfs:comment>
+  <rdfs:label>saw advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Advertisement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#livesIn">
+  <rdfs:comment>Specifies the location where a player lives.</rdfs:comment>
+  <rdfs:label>lives in</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCharacterClass">
+  <rdfs:comment>Specifies the character class of a player in a game.</rdfs:comment>
+  <rdfs:label>has character class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#CharacterClass"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAchievementType">
+  <rdfs:comment>Specifies the type of an achievement.</rdfs:comment>
+  <rdfs:label>has achievement type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What achievements of a certain type does the player have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasItemType">
+  <rdfs:comment>Specifies the type of an item.</rdfs:comment>
+  <rdfs:label>has item type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ItemType"/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasUsername">
+  <rdfs:comment>The username of a player.</rdfs:comment>
+  <rdfs:label>has username</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasReleaseDate">
+  <rdfs:comment>The release date of a game.</rdfs:comment>
+  <rdfs:label>has release date</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the release date of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:date"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasTotalPlayTime">
+  <rdfs:comment>The total hours a game has been played.</rdfs:comment>
+  <rdfs:label>has total play time</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many hours has this game been played in total?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDamage">
+  <rdfs:comment>The damage dealt by a weapon item.</rdfs:comment>
+  <rdfs:label>has damage</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much damage does a weapon deal?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSpeed">
+  <rdfs:comment>The speed of a vehicle item.</rdfs:comment>
+  <rdfs:label>has speed</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the fastest car in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAbilities">
+  <rdfs:comment>The abilities or effects of an item.</rdfs:comment>
+  <rdfs:label>has abilities</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What abilities does an item have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasKillCount">
+  <rdfs:comment>The number of kills a player has in a game.</rdfs:comment>
+  <rdfs:label>has kill count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who has the best kill count in the game? How many times have I killed someone in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasGoalCount">
+  <rdfs:comment>The number of goals a player has scored in a game.</rdfs:comment>
+  <rdfs:label>has goal count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many goals did I score in FIFA 15?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasMoneySpent">
+  <rdfs:comment>The amount of money a player has spent on in-app purchases.</rdfs:comment>
+  <rdfs:label>has money spent</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much money an average player spends in in app purchases?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+Step 3: Pitfall resolution with OOPS...
+<?xml version="1.0" encoding="utf-8"?>
+<oops:OOPSResponse xmlns:oops="http://www.oeg-upm.net/oops">
+ <oops:Pitfall>
+  <oops:Code>
+   P04
+  </oops:Code>
+  <oops:Name>
+   Creating unconnected ontology elements
+  </oops:Name>
+  <oops:Description>
+   Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.
+  </oops:Description>
+  <oops:Importance>
+   Minor
+  </oops:Importance>
+  <oops:NumberAffectedElements>
+   1
+  </oops:NumberAffectedElements>
+  <oops:Affects>
+   <oops:AffectedElement>
+    http://www.semanticweb.org/myontology#ActionEvent
+   </oops:AffectedElement>
+  </oops:Affects>
+ </oops:Pitfall>
+ <oops:Pitfall>
+  <oops:Code>
+   P10
+  </oops:Code>
+  <oops:Name>
+   Missing disjointness
+  </oops:Name>
+  <oops:Description>
+   The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint. This pitfall is related with the guidelines provided in [6], [2] and [7].
+  </oops:Description>
+  <oops:Importance>
+   Important
+  </oops:Importance>
+ </oops:Pitfall>
+ <oops:NumberAffectedElements>
+  1
+ </oops:NumberAffectedElements>
+ <oops:Pitfall>
+  <oops:Code>
+   P13
+  </oops:Code>
+  <oops:Name>
+   Inverse relationships not explicitly declared
+  </oops:Name>
+  <oops:Description>
+   This pitfall appears when any relationship (except for those that are defined as symmetric properties using owl:SymmetricProperty) does not have an inverse relationship (owl:inverseOf) defined within the ontology.
+  </oops:Description>
+  <oops:Importance>
+   Minor
+  </oops:Importance>
+  <oops:NumberAffectedElements>
+   17
+  </oops:NumberAffectedElements>
+  <oops:Affects>
+   <oops:MightBeInverse>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#createdBy
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#plays
+    </oops:AffectedElement>
+   </oops:MightBeInverse>
+   <oops:NoInverseSuggestion>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#livesIn
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#gameHasAchievement
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#similarTo
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#playerHasAchievement
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#hasMap
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#hasAchievementType
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#madePurchase
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#hasCharacterClass
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#gameHasItem
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#hasFriend
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#usesItem
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#hasGenre
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#playerHasItem
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#hasItemType
+    </oops:AffectedElement>
+    <oops:AffectedElement>
+     http://www.semanticweb.org/myontology#sawAdvertisement
+    </oops:AffectedElement>
+   </oops:NoInverseSuggestion>
+  </oops:Affects>
+ </oops:Pitfall>
+ <oops:Pitfall>
+  <oops:Code>
+   P34
+  </oops:Code>
+  <oops:Name>
+   Untyped class
+  </oops:Name>
+  <oops:Description>
+   An ontology element is used as a class without having been explicitly declared as such using the primitives owl:Class or rdfs:Class. This pitfall is related with the common problems listed in [8].
+  </oops:Description>
+  <oops:Importance>
+   Important
+  </oops:Importance>
+  <oops:NumberAffectedElements>
+   4
+  </oops:NumberAffectedElements>
+  <oops:Affects>
+   <oops:AffectedElement>
+    xsd:string
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    xsd:integer
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    xsd:date
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    xsd:decimal
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    xsd:string
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    xsd:integer
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    xsd:date
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    xsd:decimal
+   </oops:AffectedElement>
+  </oops:Affects>
+ </oops:Pitfall>
+ <oops:Suggestion>
+  <oops:Name>
+   SUGGESTION: symmetric or transitive object properties.
+  </oops:Name>
+  <oops:Description>
+   The domain and range axioms are equal for each of the following object properties. Could they be symmetric or transitive?
+  </oops:Description>
+  <oops:NumberAffectedElements>
+   2
+  </oops:NumberAffectedElements>
+  <oops:Affects>
+   <oops:AffectedElement>
+    http://www.semanticweb.org/myontology#similarTo
+   </oops:AffectedElement>
+   <oops:AffectedElement>
+    http://www.semanticweb.org/myontology#hasFriend
+   </oops:AffectedElement>
+  </oops:Affects>
+ </oops:Suggestion>
+</oops:OOPSResponse>
+Syntax validation passed
+Pitfall resolution completed
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
+  <rdfs:comment>A person who plays games.</rdfs:comment>
+  <rdfs:label>Player</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player? Who are the friends of the player? Who are the friends that play other games as well with this player? Who are the most active players in the game? What are the achievements of my friends? Who does the player play with? What achievements has a player obtained? What games has the player played? What items does the player have? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement? What is the last game a player has played? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? When was the last time a certain player played this game? In how many games does the player have all the achievements? What is the favorite map of the player in the game? What is the most played map in a game? What is the difficulty level the player uses in certain game genres? How many times have I killed someone in a game? How many goals did I score in FIFA 15? How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live? How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?
+    (competency_question) (competency_question) What is the username of the player? Who are the friends of the player? Who are the friends that play other games as well with this player? Who are the most active players in the game? What are the achievements of my friends? Who does the player play with? What achievements has a player obtained? What games has the player played? What items does the player have? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement? What is the last game a player has played? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? When was the last time a certain player played this game? In how many games does the player have all the achievements? What is the favorite map of the player in the game? What is the most played map in a game? What is the difficulty level the player uses in certain game genres? How many times have I killed someone in a game? How many goals did I score in FIFA 15? How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live? How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Game, Achievement, Item, Genre, Map, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Game">
+  <rdfs:comment>A video game or similar interactive entertainment.</rdfs:comment>
+  <rdfs:label>Game</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one? List all games of a certain Genre? What achievements does a game have? How many hours has this game been played in total? What are the types of achievements in this game? What is the genre of the game? What items exist in a game? Who is the creator of the game? What is the release date of the game? What is the most played map in a game? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What type of weapon are players using who win mostly in the game? How many players have moved from game to another when they have seen a linked commercial? What are the games where a player can use this item? How many players have made in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase?
+    (competency_question) (competency_question) What are the games similar to this one? List all games of a certain Genre? What achievements does a game have? How many hours has this game been played in total? What are the types of achievements in this game? What is the genre of the game? What items exist in a game? Who is the creator of the game? What is the release date of the game? What is the most played map in a game? How big percentage of players have a certain item in the game? What are the most common genres played by players with a certain character class in a game? What type of weapon are players using who win mostly in the game? How many players have moved from game to another when they have seen a linked commercial? What are the games where a player can use this item? How many players have made in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Achievement, Item, Genre, Map, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Achievement">
+  <rdfs:comment>An accomplishment or milestone in a game.</rdfs:comment>
+  <rdfs:label>Achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements does a game have? What are the types of achievements in this game? What achievements has a player obtained? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement?
+    (competency_question) (competency_question) What are the achievements of my friends? What achievements does a game have? What are the types of achievements in this game? What achievements has a player obtained? What achievements of a certain type does the player have? What kind of games are owned by players that have certain achievement?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Item, Genre, Map, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Item">
+  <rdfs:comment>An object or equipment in a game, such as a weapon, car, or consumable.</rdfs:comment>
+  <rdfs:label>Item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What type is the item of? What abilities does an item have? What is the fastest car in the game? How much damage does a weapon deal? What items does the player have? How big percentage of players have a certain item in the game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? What is the most crafted item in the game? What equipment does a player have in a game? What consumable items does a player have in game? What is the most used item in the game? What are the games where a player can use this item? How big percentage of players use the item in question in other linked games? What type of items are the most traded ones in the game's marketplace?
+    (competency_question) (competency_question) What items exist in a game? What type is the item of? What abilities does an item have? What is the fastest car in the game? How much damage does a weapon deal? What items does the player have? How big percentage of players have a certain item in the game? What is the preferred weapon of players with a certain character class? What type of weapon are players using who win mostly in the game? What is the most crafted item in the game? What equipment does a player have in a game? What consumable items does a player have in game? What is the most used item in the game? What are the games where a player can use this item? How big percentage of players use the item in question in other linked games? What type of items are the most traded ones in the game's marketplace?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Genre, Map, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Genre">
+  <rdfs:comment>A category or style of games, such as action, RPG, or sports.</rdfs:comment>
+  <rdfs:label>Genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre? What are the most common genres played by players with a certain character class in a game?
+    (competency_question) (competency_question) What is the genre of the game? List all games of a certain Genre? What are the most common genres played by players with a certain character class in a game?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Map, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Map">
+  <rdfs:comment>A level or environment in a game.</rdfs:comment>
+  <rdfs:label>Map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game? What is the location in map where the players die the most?
+    (competency_question) (competency_question) What is the favorite map of the player in the game? What is the most played map in a game? What is the location in map where the players die the most?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ActionEvent">
+  <rdfs:comment>An action or event that occurs in a game, such as killing, scoring, or crafting.</rdfs:comment>
+  <rdfs:label>Action Event</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes and linked via performsAction property: To address isolated ontology element pitfall and lack of disjoint axioms</vaem:rationale>
+  <dc:source>(competency_question) How many times have I killed someone in a game? How many goals did I score in FIFA 15? What is the first action done by the player after an event? How many times players have died in a level?
+    (competency_question) (competency_question) How many times have I killed someone in a game? How many goals did I score in FIFA 15? What is the first action done by the player after an event? How many times players have died in a level?
+    (pitfall) Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, Map, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#InAppPurchase">
+  <rdfs:comment>A purchase made within a game for virtual goods or services.</rdfs:comment>
+  <rdfs:label>In-App Purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?
+    (competency_question) (competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again? What is the likelihood that a player who has purchased in app purchase in one game, do so in the other one? If a player is given free item in the game, how likely are they to make an in app purchase? How much money an average player spends in in app purchases? What time are most of the in app purchases done? Where do the most paying customers live in? How long does an average player spend in the game before making first in app purchase? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, Map, ActionEvent, Advertisement, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Advertisement">
+  <rdfs:comment>An advertisement shown within or linked to a game.</rdfs:comment>
+  <rdfs:label>Advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement? How many players have moved from game to another when they have seen a linked commercial?
+    (competency_question) (competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement? How many players have moved from game to another when they have seen a linked commercial?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, Map, ActionEvent, InAppPurchase, Location, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Location">
+  <rdfs:comment>A geographical location where players live.</rdfs:comment>
+  <rdfs:label>Location</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?
+    (competency_question) (competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, Map, ActionEvent, InAppPurchase, Advertisement, CharacterClass, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#CharacterClass">
+  <rdfs:comment>A character class or role in a game, such as warrior, mage, or assassin.</rdfs:comment>
+  <rdfs:label>Character Class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?
+    (competency_question) (competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, Map, ActionEvent, InAppPurchase, Advertisement, Location, AchievementType, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#AchievementType">
+  <rdfs:comment>A type or category of achievements, such as combat, exploration, or collection.</rdfs:comment>
+  <rdfs:label>Achievement Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What are the types of achievements a game can have? What achievements of a certain type does the player have?
+    (competency_question) (competency_question) What are the types of achievements in this game? What are the types of achievements a game can have? What achievements of a certain type does the player have?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, Map, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, ItemType -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ItemType">
+  <rdfs:comment>A type or category of items, such as weapon, vehicle, consumable, or equipment.</rdfs:comment>
+  <rdfs:label>Item Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added disjoint axioms with other classes: To address lack of disjoint axioms pitfall</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game? What type of items are the most traded ones in the game's marketplace?
+    (competency_question) (competency_question) What type is the item of? What type of weapon are players using who win mostly in the game? What type of items are the most traded ones in the game's marketplace?
+    (pitfall) Lack of disjoint axioms between classes</dc:source>
+  <!-- Axiom: Disjoint with Player, Game, Achievement, Item, Genre, Map, ActionEvent, InAppPurchase, Advertisement, Location, CharacterClass, AchievementType -->
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasFriend">
+  <rdfs:comment>Specifies that a player has another player as a friend.</rdfs:comment>
+  <rdfs:label>has friend</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Declared as symmetric property: To address missing inverse relationship pitfall for symmetric properties</vaem:rationale>
+  <dc:source>(competency_question) Who are the friends of the player? Who are the friends that play other games as well with this player?
+    (competency_question) (competency_question) Who are the friends of the player? Who are the friends that play other games as well with this player?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Symmetric property -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#plays">
+  <rdfs:comment>Specifies that a player plays a game.</rdfs:comment>
+  <rdfs:label>plays</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property isPlayedBy: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) Who does the player play with? What games has the player played? What is the last game a player has played? When was the last time a certain player played this game?
+    (competency_question) (competency_question) Who does the player play with? What games has the player played? What is the last game a player has played? When was the last time a certain player played this game?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <!-- Axiom: Inverse of isPlayedBy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasAchievement">
+  <rdfs:comment>Specifies that a player has obtained an achievement.</rdfs:comment>
+  <rdfs:label>player has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property achievementObtainedBy: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What are the achievements of my friends? What achievements has a player obtained? What achievements of a certain type does the player have?
+    (competency_question) (competency_question) What are the achievements of my friends? What achievements has a player obtained? What achievements of a certain type does the player have?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <!-- Axiom: Inverse of achievementObtainedBy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasAchievement">
+  <rdfs:comment>Specifies that a game has available achievements.</rdfs:comment>
+  <rdfs:label>game has achievement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property achievementInGame: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What achievements does a game have? What are the types of achievements in this game?
+    (competency_question) (competency_question) What achievements does a game have? What are the types of achievements in this game?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <!-- Axiom: Inverse of achievementInGame -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#playerHasItem">
+  <rdfs:comment>Specifies that a player possesses an item.</rdfs:comment>
+  <rdfs:label>player has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property itemOwnedBy: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What items does the player have? What equipment does a player have in a game? What consumable items does a player have in game?
+    (competency_question) (competency_question) What items does the player have? What equipment does a player have in a game? What consumable items does a player have in game?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <!-- Axiom: Inverse of itemOwnedBy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#gameHasItem">
+  <rdfs:comment>Specifies that a game contains items.</rdfs:comment>
+  <rdfs:label>game has item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property itemInGame: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What items exist in a game? What are the games where a player can use this item?
+    (competency_question) (competency_question) What items exist in a game? What are the games where a player can use this item?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <!-- Axiom: Inverse of itemInGame -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasGenre">
+  <rdfs:comment>Specifies the genre of a game.</rdfs:comment>
+  <rdfs:label>has genre</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property genreOf: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What is the genre of the game? List all games of a certain Genre?
+    (competency_question) (competency_question) What is the genre of the game? List all games of a certain Genre?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+  <!-- Axiom: Inverse of genreOf -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasMap">
+  <rdfs:comment>Specifies that a game has maps.</rdfs:comment>
+  <rdfs:label>has map</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property mapInGame: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What is the favorite map of the player in the game? What is the most played map in a game?
+    (competency_question) (competency_question) What is the favorite map of the player in the game? What is the most played map in a game?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Map"/>
+  <!-- Axiom: Inverse of mapInGame -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#createdBy">
+  <rdfs:comment>Specifies the creator of a game.</rdfs:comment>
+  <rdfs:label>created by</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property creatorOf: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) Who is the creator of the game?
+    (competency_question) (competency_question) Who is the creator of the game?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of creatorOf -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#similarTo">
+  <rdfs:comment>Specifies that a game is similar to another game.</rdfs:comment>
+  <rdfs:label>similar to</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Declared as symmetric property: To address missing inverse relationship pitfall for symmetric properties</vaem:rationale>
+  <dc:source>(competency_question) What are the games similar to this one?
+    (competency_question) (competency_question) What are the games similar to this one?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <!-- Axiom: Symmetric property -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usesItem">
+  <rdfs:comment>Specifies that a player uses an item in a game.</rdfs:comment>
+  <rdfs:label>uses item</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property usedBy: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What type of weapon are players using who win mostly in the game? After gaining an item in the game, how many players use it? How big percentage of players use the item in question in other linked games?
+    (competency_question) (competency_question) What type of weapon are players using who win mostly in the game? After gaining an item in the game, how many players use it? How big percentage of players use the item in question in other linked games?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <!-- Axiom: Inverse of usedBy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#madePurchase">
+  <rdfs:comment>Specifies that a player made an in-app purchase.</rdfs:comment>
+  <rdfs:label>made purchase</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property purchaseMadeBy: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again?
+    (competency_question) (competency_question) How many players have made in app purchases? How many players who have already spent money in this game, spend money again?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+  <!-- Axiom: Inverse of purchaseMadeBy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#sawAdvertisement">
+  <rdfs:comment>Specifies that a player saw an advertisement.</rdfs:comment>
+  <rdfs:label>saw advertisement</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property advertisementSeenBy: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?
+    (competency_question) (competency_question) How many players clicked an ingame advertisement? How many players start the other game after seeing an advertisement?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Advertisement"/>
+  <!-- Axiom: Inverse of advertisementSeenBy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#livesIn">
+  <rdfs:comment>Specifies the location where a player lives.</rdfs:comment>
+  <rdfs:label>lives in</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property locationOf: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?
+    (competency_question) (competency_question) Where do the most paying customers live in? Where do the players live who have not made any in app purchases? Where do the players who have done the most in app purchases live?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+  <!-- Axiom: Inverse of locationOf -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasCharacterClass">
+  <rdfs:comment>Specifies the character class of a player in a game.</rdfs:comment>
+  <rdfs:label>has character class</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property classOfPlayer: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?
+    (competency_question) (competency_question) What are the most common genres played by players with a certain character class in a game? What is the preferred weapon of players with a certain character class?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#CharacterClass"/>
+  <!-- Axiom: Inverse of classOfPlayer -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasAchievementType">
+  <rdfs:comment>Specifies the type of an achievement.</rdfs:comment>
+  <rdfs:label>has achievement type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property typeOfAchievement: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What are the types of achievements in this game? What achievements of a certain type does the player have?
+    (competency_question) (competency_question) What are the types of achievements in this game? What achievements of a certain type does the player have?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+  <!-- Axiom: Inverse of typeOfAchievement -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasItemType">
+  <rdfs:comment>Specifies the type of an item.</rdfs:comment>
+  <rdfs:label>has item type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Added inverse property typeOfItem: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(competency_question) What type is the item of? What type of weapon are players using who win mostly in the game?
+    (competency_question) (competency_question) What type is the item of? What type of weapon are players using who win mostly in the game?
+    (pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ItemType"/>
+  <!-- Axiom: Inverse of typeOfItem -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#performsAction">
+  <rdfs:comment>Specifies that a player performs an action event.</rdfs:comment>
+  <rdfs:label>performs action</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created: To connect isolated ActionEvent class to Player</vaem:rationale>
+  <dc:source>(pitfall) Ontology elements (classes, object properties and datatype properties) are created isolated, with no relation to the rest of the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ActionEvent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isPlayedBy">
+  <rdfs:comment>Specifies that a game is played by a player.</rdfs:comment>
+  <rdfs:label>is played by</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of plays: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of plays -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#achievementObtainedBy">
+  <rdfs:comment>Specifies that an achievement is obtained by a player.</rdfs:comment>
+  <rdfs:label>achievement obtained by</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of playerHasAchievement: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of playerHasAchievement -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#achievementInGame">
+  <rdfs:comment>Specifies that an achievement is in a game.</rdfs:comment>
+  <rdfs:label>achievement in game</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of gameHasAchievement: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <!-- Axiom: Inverse of gameHasAchievement -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#itemOwnedBy">
+  <rdfs:comment>Specifies that an item is owned by a player.</rdfs:comment>
+  <rdfs:label>item owned by</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of playerHasItem: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of playerHasItem -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#itemInGame">
+  <rdfs:comment>Specifies that an item is in a game.</rdfs:comment>
+  <rdfs:label>item in game</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of gameHasItem: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <!-- Axiom: Inverse of gameHasItem -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#genreOf">
+  <rdfs:comment>Specifies that a genre is of a game.</rdfs:comment>
+  <rdfs:label>genre of</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of hasGenre: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Genre"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <!-- Axiom: Inverse of hasGenre -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#mapInGame">
+  <rdfs:comment>Specifies that a map is in a game.</rdfs:comment>
+  <rdfs:label>map in game</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of hasMap: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Map"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <!-- Axiom: Inverse of hasMap -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#creatorOf">
+  <rdfs:comment>Specifies that a player is the creator of a game.</rdfs:comment>
+  <rdfs:label>creator of</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of createdBy: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <!-- Axiom: Inverse of createdBy -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#usedBy">
+  <rdfs:comment>Specifies that an item is used by a player.</rdfs:comment>
+  <rdfs:label>used by</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of usesItem: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of usesItem -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#purchaseMadeBy">
+  <rdfs:comment>Specifies that an in-app purchase is made by a player.</rdfs:comment>
+  <rdfs:label>purchase made by</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of madePurchase: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#InAppPurchase"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of madePurchase -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#advertisementSeenBy">
+  <rdfs:comment>Specifies that an advertisement is seen by a player.</rdfs:comment>
+  <rdfs:label>advertisement seen by</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of sawAdvertisement: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Advertisement"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of sawAdvertisement -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#locationOf">
+  <rdfs:comment>Specifies that a location is of a player.</rdfs:comment>
+  <rdfs:label>location of</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of livesIn: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Location"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of livesIn -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#classOfPlayer">
+  <rdfs:comment>Specifies that a character class is of a player.</rdfs:comment>
+  <rdfs:label>class of player</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of hasCharacterClass: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#CharacterClass"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <!-- Axiom: Inverse of hasCharacterClass -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#typeOfAchievement">
+  <rdfs:comment>Specifies that an achievement type is of an achievement.</rdfs:comment>
+  <rdfs:label>type of achievement</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of hasAchievementType: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#AchievementType"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Achievement"/>
+  <!-- Axiom: Inverse of hasAchievementType -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#typeOfItem">
+  <rdfs:comment>Specifies that an item type is of an item.</rdfs:comment>
+  <rdfs:label>type of item</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created as inverse of hasItemType: To address missing inverse relationship pitfall</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationships for object properties</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ItemType"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <!-- Axiom: Inverse of hasItemType -->
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasUsername">
+  <rdfs:comment>The username of a player.</rdfs:comment>
+  <rdfs:label>has username</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the username of the player?
+    (competency_question) (competency_question) What is the username of the player?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasReleaseDate">
+  <rdfs:comment>The release date of a game.</rdfs:comment>
+  <rdfs:label>has release date</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the release date of the game?
+    (competency_question) (competency_question) What is the release date of the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:date"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasTotalPlayTime">
+  <rdfs:comment>The total hours a game has been played.</rdfs:comment>
+  <rdfs:label>has total play time</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many hours has this game been played in total?
+    (competency_question) (competency_question) How many hours has this game been played in total?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Game"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDamage">
+  <rdfs:comment>The damage dealt by a weapon item.</rdfs:comment>
+  <rdfs:label>has damage</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much damage does a weapon deal?
+    (competency_question) (competency_question) How much damage does a weapon deal?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasSpeed">
+  <rdfs:comment>The speed of a vehicle item.</rdfs:comment>
+  <rdfs:label>has speed</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What is the fastest car in the game?
+    (competency_question) (competency_question) What is the fastest car in the game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasAbilities">
+  <rdfs:comment>The abilities or effects of an item.</rdfs:comment>
+  <rdfs:label>has abilities</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) What abilities does an item have?
+    (competency_question) (competency_question) What abilities does an item have?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Item"/>
+  <rdfs:range rdf:resource="xsd:string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasKillCount">
+  <rdfs:comment>The number of kills a player has in a game.</rdfs:comment>
+  <rdfs:label>has kill count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) Who has the best kill count in the game? How many times have I killed someone in a game?
+    (competency_question) (competency_question) Who has the best kill count in the game? How many times have I killed someone in a game?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasGoalCount">
+  <rdfs:comment>The number of goals a player has scored in a game.</rdfs:comment>
+  <rdfs:label>has goal count</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How many goals did I score in FIFA 15?
+    (competency_question) (competency_question) How many goals did I score in FIFA 15?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasMoneySpent">
+  <rdfs:comment>The amount of money a player has spent on in-app purchases.</rdfs:comment>
+  <rdfs:label>has money spent</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions</vaem:rationale>
+  <dc:source>(competency_question) How much money an average player spends in in app purchases?
+    (competency_question) (competency_question) How much money an average player spends in in app purchases?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="xsd:decimal"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
+
+==================================================
+WORKFLOW COMPLETED SUCCESSFULLY!
+==================================================
+✓ Is valid OWL: True
+✓ Passes Hermit reasoner check
