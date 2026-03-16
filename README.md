@@ -19,7 +19,7 @@ masoe/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/OEG-Clark/masoe.git
+   git clone [https://github.com/oeg-upm/masoe.git]
    cd masoe
    ```
 
