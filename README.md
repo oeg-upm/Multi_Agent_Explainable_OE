@@ -27,6 +27,7 @@ masoe/
    ```
    Check the src/ directory for entry scripts and usage examples.
    ```
+[Detailed Execution Instruction](src/README.md)
 ## Citation
 
 If you use this framework in your research, please cite:
