@@ -1,4 +1,4 @@
-# Multi-Agent Framework for Explainable Ontology Generation
+# MEAONTO: Multi-Agent Framework for Explainable Ontology Generation
 
 A fully automated, multi-agent pipeline that generates OWL ontologies directly from Competency Questions (CQs) and iteratively repairs them using external validation tools. Every ontology term produced by the pipeline is traceable to the agent and requirement that introduced it.
 
