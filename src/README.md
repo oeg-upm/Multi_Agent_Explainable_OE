@@ -1,4 +1,4 @@
-# Multi-Agent Framework for Explainable Ontology Generation
+# MEAONTO: Multi-Agent Framework for Explainable Ontology Generation
 
 A fully automated, multi-agent pipeline that generates OWL ontologies directly from Competency Questions (CQs) and iteratively repairs them using external validation tools. Every ontology term produced by the pipeline is traceable to the agent and requirement that introduced it.
 
@@ -16,6 +16,8 @@ The pipeline consists of four sequential stages:
 | `Syntax Repair Agent` | `deepseek-reasoner` | Fixes RDF/XML syntax errors reported by the parser |
 | `Logical Consistency Agent` | `deepseek-reasoner` | Repairs logical inconsistencies reported by HermiT |
 | `Pitfall Resolution Agent` | `deepseek-reasoner` | Resolves ontology modeling pitfalls reported by OOPS! |
+
+![Multi-Agent Ontology Generation Pipeline](image/soel_framework.png)
 
 ---
 
@@ -123,17 +125,21 @@ Each generated ontology entity is a structured object with the following fields:
 
 ```xml
 <owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
-  <rdfs:comment>A person who plays a game.</rdfs:comment>
-  <rdfs:label>Player</rdfs:label>
+  <!-- Axiom: disjointWith NPC -->
+  <dc:source>CQ1, CQ3; HermiT: conflict; OOPS P10</dc:source>
   <vaem:rationale>
-    [Ontology Generation Agent] Initial creation: Derived from CQ1 - What is the username of the player?
-    [Pitfall Resolution Agent] Added disjointness axiom: OOPS P10 detected missing disjoint classes.
+    [Logical Consistency Agent] Fixed subClassOf error;
+    [Ontology Pitfall Agent] Added disjointness.
   </vaem:rationale>
-  <dc:source>
-    (competency_question) What is the username of the player?
-    (pitfall) P10: Missing disjoint classes.
-  </dc:source>
+  <!-- Axiom: disjointWith NPC -->
 </owl:Class>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#triggersEvent">
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Player"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#GameEvent"/>
+  <dc:source>HermiT: introduced to resolve Player unsatisfiability</dc:source>
+  <vaem:rationale>[Logical Consistency Agent] Created to correctly model player-event relationship.</vaem:rationale>
+</owl:ObjectProperty>
 ```
 
 
