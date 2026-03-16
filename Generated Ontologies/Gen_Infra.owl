@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ParkingLot">
+  <rdfs:comment>A place where vehicles can be parked.</rdfs:comment>
+  <rdfs:label>Parking Lot</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Derived from competency questions about parking lots.
+    [Pitfall Resulotion Agent] Entity created: Derived from competency questions about parking lots.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los estacionamientos disponibles y son en la vía pública o fuera de ella?
+    (competency_question) ¿Qué tarifas se aplican a un aparcamiento determinado?
+    (competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?
+    (competency_question) ¿Cuáles son los aparcamientos existentes en una zona regulada concreta?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#LocationType">
+  <rdfs:comment>The type of location for a parking lot, either on-street or off-street.</rdfs:comment>
+  <rdfs:label>Location Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Based on competency question about location types.
+    [Pitfall Resulotion Agent] Entity created: Based on competency question about location types.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los estacionamientos disponibles y son en la vía pública o fuera de ella?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#OnStreet">
+  <rdfs:comment>A parking lot located on public streets.</rdfs:comment>
+  <rdfs:label>On Street</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Subclass of LocationType for on-street parking.
+    [Pitfall Resulotion Agent] Entity created: Subclass of LocationType for on-street parking.
+    [Pitfall Resulotion Agent] Added subClassOf and disjointWith axioms: To fix isolated class pitfall and add disjointness with OffStreet.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los estacionamientos disponibles y son en la vía pública o fuera de ella?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#LocationType"/>
+  <!-- Axiom: disjointWith OffStreet -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#OffStreet">
+  <rdfs:comment>A parking lot located off public streets, such as in parking garages or lots.</rdfs:comment>
+  <rdfs:label>Off Street</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Subclass of LocationType for off-street parking.
+    [Pitfall Resulotion Agent] Entity created: Subclass of LocationType for off-street parking.
+    [Pitfall Resulotion Agent] Added subClassOf and disjointWith axioms: To fix isolated class pitfall and add disjointness with OnStreet.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los estacionamientos disponibles y son en la vía pública o fuera de ella?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#LocationType"/>
+  <!-- Axiom: disjointWith OnStreet -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Rate">
+  <rdfs:comment>A tariff or fee applicable to a parking lot.</rdfs:comment>
+  <rdfs:label>Rate</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Based on competency question about rates.
+    [Pitfall Resulotion Agent] Entity created: Based on competency question about rates.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tarifas se aplican a un aparcamiento determinado?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#SpotGroup">
+  <rdfs:comment>A group of parking spots within a parking lot.</rdfs:comment>
+  <rdfs:label>Spot Group</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Based on competency question about spot groups.
+    [Pitfall Resulotion Agent] Entity created: Based on competency question about spot groups.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#VehicleType">
+  <rdfs:comment>The type of vehicle, such as electric, motorcycle, or for persons with reduced mobility.</rdfs:comment>
+  <rdfs:label>Vehicle Type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Based on competency question about vehicle types for spot groups.
+    [Pitfall Resulotion Agent] Entity created: Based on competency question about vehicle types for spot groups.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ElectricVehicle">
+  <rdfs:comment>A vehicle that is electric-powered.</rdfs:comment>
+  <rdfs:label>Electric Vehicle</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Subclass of VehicleType for electric vehicles.
+    [Pitfall Resulotion Agent] Entity created: Subclass of VehicleType for electric vehicles.
+    [Pitfall Resulotion Agent] Added subClassOf and disjointWith axioms: To fix isolated class pitfall and add disjointness with Motorcycle and PMRVehicle.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#VehicleType"/>
+  <!-- Axiom: disjointWith Motorcycle, PMRVehicle -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Motorcycle">
+  <rdfs:comment>A two-wheeled motor vehicle.</rdfs:comment>
+  <rdfs:label>Motorcycle</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Subclass of VehicleType for motorcycles.
+    [Pitfall Resulotion Agent] Entity created: Subclass of VehicleType for motorcycles.
+    [Pitfall Resulotion Agent] Added subClassOf and disjointWith axioms: To fix isolated class pitfall and add disjointness with ElectricVehicle and PMRVehicle.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#VehicleType"/>
+  <!-- Axiom: disjointWith ElectricVehicle, PMRVehicle -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PMRVehicle">
+  <rdfs:comment>A vehicle for persons with reduced mobility.</rdfs:comment>
+  <rdfs:label>PMR Vehicle</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Subclass of VehicleType for PMR vehicles.
+    [Pitfall Resulotion Agent] Entity created: Subclass of VehicleType for PMR vehicles.
+    [Pitfall Resulotion Agent] Added subClassOf and disjointWith axioms: To fix isolated class pitfall and add disjointness with ElectricVehicle and Motorcycle.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#VehicleType"/>
+  <!-- Axiom: disjointWith ElectricVehicle, Motorcycle -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Permit">
+  <rdfs:comment>A permission required to park in certain spot groups.</rdfs:comment>
+  <rdfs:label>Permit</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Based on competency question about permits.
+    [Pitfall Resulotion Agent] Entity created: Based on competency question about permits.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tipo de permiso se requiere para aparcar en un grupo de plazas (ej. residentes, carga y descarga)?</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#ResidentPermit">
+  <rdfs:comment>A permit for residents to park in certain areas.</rdfs:comment>
+  <rdfs:label>Resident Permit</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Subclass of Permit for resident permits.
+    [Pitfall Resulotion Agent] Entity created: Subclass of Permit for resident permits.
+    [Pitfall Resulotion Agent] Added subClassOf and disjointWith axioms: To fix isolated class pitfall and add disjointness with LoadingUnloadingPermit.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tipo de permiso se requiere para aparcar en un grupo de plazas (ej. residentes, carga y descarga)?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Permit"/>
+  <!-- Axiom: disjointWith LoadingUnloadingPermit -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#LoadingUnloadingPermit">
+  <rdfs:comment>A permit for loading and unloading activities.</rdfs:comment>
+  <rdfs:label>Loading and Unloading Permit</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Subclass of Permit for loading and unloading permits.
+    [Pitfall Resulotion Agent] Entity created: Subclass of Permit for loading and unloading permits.
+    [Pitfall Resulotion Agent] Added subClassOf and disjointWith axioms: To fix isolated class pitfall and add disjointness with ResidentPermit.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tipo de permiso se requiere para aparcar en un grupo de plazas (ej. residentes, carga y descarga)?</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Permit"/>
+  <!-- Axiom: disjointWith ResidentPermit -->
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#RegulatedZone">
+  <rdfs:comment>A specific zone where parking is regulated.</rdfs:comment>
+  <rdfs:label>Regulated Zone</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: Based on competency question about regulated zones.
+    [Pitfall Resulotion Agent] Entity created: Based on competency question about regulated zones.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los aparcamientos existentes en una zona regulada concreta?</dc:source>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasLocationType">
+  <rdfs:comment>Specifies the location type of a parking lot.</rdfs:comment>
+  <rdfs:label>has location type</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To link ParkingLot to LocationType.
+    [Pitfall Resulotion Agent] Entity created: To link ParkingLot to LocationType.
+    [Pitfall Resulotion Agent] Added inverseOf axiom: To fix no inverse relationship pitfall by defining inverse property locationTypeOf.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los estacionamientos disponibles y son en la vía pública o fuera de ella?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#LocationType"/>
+  <!-- Axiom: inverseOf locationTypeOf -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasRate">
+  <rdfs:comment>Links a parking lot to its applicable rates.</rdfs:comment>
+  <rdfs:label>has rate</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To link ParkingLot to Rate.
+    [Pitfall Resulotion Agent] Entity created: To link ParkingLot to Rate.
+    [Pitfall Resulotion Agent] Added inverseOf axiom: To fix no inverse relationship pitfall by defining inverse property rateAppliedTo.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tarifas se aplican a un aparcamiento determinado?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Rate"/>
+  <!-- Axiom: inverseOf rateAppliedTo -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#hasSpotGroup">
+  <rdfs:comment>Links a parking lot to its spot groups.</rdfs:comment>
+  <rdfs:label>has spot group</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To link ParkingLot to SpotGroup.
+    [Pitfall Resulotion Agent] Entity created: To link ParkingLot to SpotGroup.
+    [Pitfall Resulotion Agent] Added inverseOf axiom: To fix no inverse relationship pitfall by defining inverse property spotGroupOf.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#SpotGroup"/>
+  <!-- Axiom: inverseOf spotGroupOf -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#reservedFor">
+  <rdfs:comment>Specifies the vehicle type for which a spot group is reserved.</rdfs:comment>
+  <rdfs:label>reserved for</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To link SpotGroup to VehicleType.
+    [Pitfall Resulotion Agent] Entity created: To link SpotGroup to VehicleType.
+    [Pitfall Resulotion Agent] Added inverseOf axiom: To fix no inverse relationship pitfall by defining inverse property vehicleTypeForReservation.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#SpotGroup"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#VehicleType"/>
+  <!-- Axiom: inverseOf vehicleTypeForReservation -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#requiresPermit">
+  <rdfs:comment>Indicates the permit required for a spot group.</rdfs:comment>
+  <rdfs:label>requires permit</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To link SpotGroup to Permit.
+    [Pitfall Resulotion Agent] Entity created: To link SpotGroup to Permit.
+    [Pitfall Resulotion Agent] Added inverseOf axiom: To fix no inverse relationship pitfall by defining inverse property permitRequiredFor.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tipo de permiso se requiere para aparcar en un grupo de plazas (ej. residentes, carga y descarga)?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#SpotGroup"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Permit"/>
+  <!-- Axiom: inverseOf permitRequiredFor -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#locatedInZone">
+  <rdfs:comment>Specifies the regulated zone where a parking lot is located.</rdfs:comment>
+  <rdfs:label>located in zone</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To link ParkingLot to RegulatedZone.
+    [Pitfall Resulotion Agent] Entity created: To link ParkingLot to RegulatedZone.
+    [Pitfall Resulotion Agent] Added inverseOf axiom: To fix no inverse relationship pitfall by defining inverse property zoneContains.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los aparcamientos existentes en una zona regulada concreta?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#RegulatedZone"/>
+  <!-- Axiom: inverseOf zoneContains -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#locationTypeOf">
+  <rdfs:comment>Specifies that a location type belongs to a parking lot.</rdfs:comment>
+  <rdfs:label>location type of</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created: To add inverse relationship for hasLocationType as per OOPS pitfall.</vaem:rationale>
+  <dc:source>(pitfall) No inverse relationship defined for hasLocationType.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#LocationType"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <!-- Axiom: inverseOf hasLocationType -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#rateAppliedTo">
+  <rdfs:comment>Specifies that a rate is applied to a parking lot.</rdfs:comment>
+  <rdfs:label>rate applied to</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created: To add inverse relationship for hasRate as per OOPS pitfall.</vaem:rationale>
+  <dc:source>(pitfall) No inverse relationship defined for hasRate.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rate"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <!-- Axiom: inverseOf hasRate -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#spotGroupOf">
+  <rdfs:comment>Specifies that a spot group is part of a parking lot.</rdfs:comment>
+  <rdfs:label>spot group of</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created: To add inverse relationship for hasSpotGroup as per OOPS pitfall.</vaem:rationale>
+  <dc:source>(pitfall) No inverse relationship defined for hasSpotGroup.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#SpotGroup"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <!-- Axiom: inverseOf hasSpotGroup -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#vehicleTypeForReservation">
+  <rdfs:comment>Specifies the vehicle type for which a spot group is reserved.</rdfs:comment>
+  <rdfs:label>vehicle type for reservation</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created: To add inverse relationship for reservedFor as per OOPS pitfall.</vaem:rationale>
+  <dc:source>(pitfall) No inverse relationship defined for reservedFor.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#VehicleType"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#SpotGroup"/>
+  <!-- Axiom: inverseOf reservedFor -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#permitRequiredFor">
+  <rdfs:comment>Specifies the permit required for a spot group.</rdfs:comment>
+  <rdfs:label>permit required for</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created: To add inverse relationship for requiresPermit as per OOPS pitfall.</vaem:rationale>
+  <dc:source>(pitfall) No inverse relationship defined for requiresPermit.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Permit"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#SpotGroup"/>
+  <!-- Axiom: inverseOf requiresPermit -->
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#zoneContains">
+  <rdfs:comment>Specifies that a regulated zone contains parking lots.</rdfs:comment>
+  <rdfs:label>zone contains</rdfs:label>
+  <vaem:rationale>[Pitfall Resulotion Agent] Entity created: To add inverse relationship for locatedInZone as per OOPS pitfall.</vaem:rationale>
+  <dc:source>(pitfall) No inverse relationship defined for locatedInZone.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#RegulatedZone"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <!-- Axiom: inverseOf locatedInZone -->
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#isAvailable">
+  <rdfs:comment>Indicates if the parking lot is currently available for parking.</rdfs:comment>
+  <rdfs:label>is available</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To model the availability of parking lots.
+    [Pitfall Resulotion Agent] Entity created: To model the availability of parking lots.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los estacionamientos disponibles y son en la vía pública o fuera de ella?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#ParkingLot"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#rateValue">
+  <rdfs:comment>The numerical value of the rate.</rdfs:comment>
+  <rdfs:label>rate value</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To specify the amount of the rate.
+    [Pitfall Resulotion Agent] Entity created: To specify the amount of the rate.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tarifas se aplican a un aparcamiento determinado?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rate"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#rateCurrency">
+  <rdfs:comment>The currency of the rate.</rdfs:comment>
+  <rdfs:label>rate currency</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To specify the currency for the rate.
+    [Pitfall Resulotion Agent] Entity created: To specify the currency for the rate.</vaem:rationale>
+  <dc:source>(competency_question) ¿Qué tarifas se aplican a un aparcamiento determinado?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Rate"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#spotGroupName">
+  <rdfs:comment>The name or identifier of the spot group.</rdfs:comment>
+  <rdfs:label>spot group name</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To name or identify spot groups.
+    [Pitfall Resulotion Agent] Entity created: To name or identify spot groups.</vaem:rationale>
+  <dc:source>(competency_question) Para un aparcamiento, ¿qué grupos de plazas existen y para qué tipo de vehículo están reservadas (ej. eléctricos, motos, PMR)?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#SpotGroup"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#zoneName">
+  <rdfs:comment>The name or identifier of the regulated zone.</rdfs:comment>
+  <rdfs:label>zone name</rdfs:label>
+  <vaem:rationale>[Ontology Generation Agent] unknown: [Ontology Generation Agent] Entity created: To name or identify regulated zones.
+    [Pitfall Resulotion Agent] Entity created: To name or identify regulated zones.</vaem:rationale>
+  <dc:source>(competency_question) ¿Cuáles son los aparcamientos existentes en una zona regulada concreta?</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#RegulatedZone"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
