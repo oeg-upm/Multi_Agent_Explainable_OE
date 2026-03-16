@@ -1,2 +1,1 @@
-# MASEO: Multi Agent Systen for Explainable Ontology generation
-
+# MASEO: A Multi-Agent System for Explainable Ontology Generation
