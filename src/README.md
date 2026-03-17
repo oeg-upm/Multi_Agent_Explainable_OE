@@ -17,7 +17,7 @@ The pipeline consists of four sequential stages:
 | `Logical Consistency Agent` | `deepseek-reasoner` | Repairs logical inconsistencies reported by HermiT |
 | `Pitfall Resolution Agent` | `deepseek-reasoner` | Resolves ontology modeling pitfalls reported by OOPS! |
 
-![Multi-Agent Ontology Generation Pipeline](image/soel_framework.png)
+![Multi-Agent Ontology Generation Pipeline](image/maseo_framework.pdf)
 
 ---
 
