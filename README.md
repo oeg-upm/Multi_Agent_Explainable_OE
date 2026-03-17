@@ -159,7 +159,7 @@ Each generated ontology entity is a structured object with the following fields:
 
 We evaluate MASEO framework across two complementary dimensions in three ontology generation case studies: Infrastructure Ontology, Vehicle Census Ontology (VCO), and Video Game Ontology (VGO).
 1. **Structural characteristics & CQ coverage**: The first dimension combines structural analysis and CQ requirement coverage. Structural characteristics are derived from ontology diagrams, while CQ coverage is assessed from provenance records through expert inspection.
-2. **Concept label matching & concept coverage**: The second dimension evaluates the alignment between concept labels in the generated ontologies and those in the corresponding gold-standard ontologies.
+2. **Concept label matching & concept coverage**: The second dimension evaluates the alignment between concept labels in the generated ontologies and those in the corresponding gold-standard ontologies. We assess this alignment using three matching strategies, namely exact match, lexical match, and semantic match, and report precision, recall, F1-score, and concept coverage for each strategy.
 ## Datasets
 
 | Dataset | Language | CQs | Gold Standard |
