@@ -17,7 +17,7 @@ The pipeline consists of four sequential stages:
 
 The illustration of the MASOE framework:
 
-![Multi-Agent Ontology Generation Pipeline](image/soel_framework.png)
+![Multi-Agent Ontology Generation Pipeline](image/maseo_framework.png)
 
 ---
 
