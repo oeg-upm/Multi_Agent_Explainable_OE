@@ -1,12 +1,10 @@
-# MEAONTO: Multi-Agent Framework for Explainable Ontology Generation
+# MASOE Execution Instruction
 
 A fully automated, multi-agent pipeline that generates OWL ontologies directly from Competency Questions (CQs) and iteratively repairs them using external validation tools. Every ontology term produced by the pipeline is traceable to the agent and requirement that introduced it.
 
 ---
 
-## Overview
-
-This framework adopts a role-based multi-agent architecture with a built-in provenance tracking mechanism. Rather than producing a flat OWL file, the pipeline embeds a full modification history inside each ontology entity, recording which agent made each change and what motivated it.
+## MASOE Structural Overview
 
 The pipeline consists of four sequential stages:
 
@@ -17,17 +15,17 @@ The pipeline consists of four sequential stages:
 | `Logical Consistency Agent` | `deepseek-reasoner` | Repairs logical inconsistencies reported by HermiT |
 | `Pitfall Resolution Agent` | `deepseek-reasoner` | Resolves ontology modeling pitfalls reported by OOPS! |
 
+The illustration of the MASOE framework:
+
 ![Multi-Agent Ontology Generation Pipeline](image/maseo_framework.png)
 
 ---
 
 ## Features
 
-- **End-to-end automation** — from raw CQs to a validated OWL/RDF-XML ontology
+- **End-to-end automation** — from a list of CQs to a validated ontology
 - **Role-based agents** — each stage is handled by a dedicated LLM agent with a specific instruction and responsibility
 - **Provenance tracking** — every ontology entity carries an append-only `vaem:rationale` log attributed to the agent that made each change, and a `dc:source` log linking each change back to the CQ, pitfall, or error that motivated it
-- **Syntax self-loop** — syntax validation is re-applied after every repair stage until the ontology is well-formed
-- **Structured output** — ontology entities are represented as typed Pydantic objects, ensuring schema conformance before serialisation to OWL/XML
 
 ---
 
@@ -47,28 +45,30 @@ pip install agno rdflib requests beautifulsoup4 pydantic
 | [OOPS! REST API](https://oops.linkeddata.es/) | Ontology pitfall detection | No local setup required — uses the public REST endpoint |
 | Java (JRE 8+) | Required to run HermiT | `sudo apt install default-jre` |
 
-### API key
-
-This framework uses [DeepSeek](https://platform.deepseek.com/) as the LLM backend. Set your API key via the `--api_key` argument or as an environment variable:
-
-```bash
-export DEEPSEEK_API_KEY=your_api_key_here
-```
-
 ---
 
 ## Configuration
 
 Before running, update the following constants at the top of `agent_framework.py`:
 
+```bash
+# Instaill java and ollama in you system
+sudo apt update
+sudo apt install deflault-jre
+sudo apt install curl
+curl -fsSL https://ollama.com/install.sh | sh
+ollama pull embeddinggemma
+ollama serve
+```
+Make the changes in the `agent_framework.py` to ensure the correctness of variables. 
 ```python
+
 # Path to your OOPS! request template
 REQUEST_TEMPLATE = "/path/to/oops_request_template.xml"
 
 # Path to HermiT JAR inside reason_ontology()
 "java", "-jar", "/path/to/HermiT.jar"
 ```
-
 ---
 
 ## Usage
@@ -98,7 +98,8 @@ The CQs file should be a JSON array of strings:
 [
   "What is the genre of a game?",
   "Which players have purchased an in-app item?",
-  "What is the username of a player?"
+  "What is the username of a player?",
+...
 ]
 ```
 
@@ -108,18 +109,17 @@ The CQs file should be a JSON array of strings:
 
 Each generated ontology entity is a structured object with the following fields:
 
-| Field | OWL Serialisation | Description |
-|-------|-------------------|-------------|
-| `Type` | XML tag | One of `owl:Class`, `owl:ObjectProperty`, `owl:DatatypeProperty` |
-| `Name` | `rdf:about` | camelCase local name, combined with `BASE_URI` |
-| `Comment` | `rdfs:comment` | Formal semantic definition |
-| `Label` | `rdfs:label` | Human-readable identifier |
-| `Rationale` | `vaem:rationale` | Append-only, agent-attributed modification log |
-| `Source` | `dc:source` | Append-only log of CQs, pitfalls, or errors that motivated each change |
-| `Domain` | `rdfs:domain` | Applicable to properties only |
-| `Range` | `rdfs:range` | Applicable to properties only; XSD namespace used for datatype properties |
-| `Functional` | `owl:FunctionalProperty` | Applicable to properties only |
-| `Axiom` | `owl:Axiom` | Optional additional logical restriction |
+| Field | Definition | Example value |
+|-------|-----------|---------------|
+| **Type** (`rdf:type`) | Indicates whether the entity is an `owl:Class`, `owl:ObjectProperty`, or `owl:DatatypeProperty`. | `:Player rdf:type owl:Class;` `:hasUsername rdf:type owl:DatatypeProperty` |
+| **Label** (`rdfs:label`) | Provides a human-readable name for the entity. | `"Player"` ; `"has username"` |
+| **Comment** (`rdfs:comment`) | Provides a textual description of the meaning of the entity. | `"A person who plays games."` ; `"Relates a player to the player's username."` |
+| **Rationale** (`vaem:rationale`) | Records the justification for entity creation or modification across refinement iterations. | `"Derived from CQ [number] about the username of a player."` |
+| **Source** (`dc:Source`) | Records the CQ or validation feedback from which the entity or revision was derived. | `"What is the username of the player?"` |
+| **Subclass of** (`rdfs:subClassOf`) | (Classes only) Records subclass relations or logical restrictions involving the class. | `:Player rdfs:SubClassOf :Human` |
+| **Domain** (`rdfs:domain`) | (Properties only) Specifies the class to which a property applies. | `:hasUsername rdfs:domain :Player` |
+| **Range** (`rdfs:range`) | (Properties only) Specifies the value type or class associated with a property. | `:hasUsername rdfs:range xsd:string` |
+| **Other Axioms** | Captures logical constraints as structured XML comments to preserve modeling intent. | `<!-- Axiom: Disjoint with Game -->` (captured as comments) |
 
 ### Example output
 
@@ -141,6 +141,8 @@ Each generated ontology entity is a structured object with the following fields:
   <vaem:rationale>[Logical Consistency Agent] Created to correctly model player-event relationship.</vaem:rationale>
 </owl:ObjectProperty>
 ```
+
+
 
 
 
