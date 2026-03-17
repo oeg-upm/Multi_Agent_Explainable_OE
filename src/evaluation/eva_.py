@@ -303,7 +303,7 @@ def pre_process(gen_class, ground_class, info_type, model_id=None, embedding_bac
 
     all_concepts = sorted(set(ground_class) | set(gen_class))
 
-    # ========= 空列表处理 =========
+
     if len(ground_class) == 0 and len(gen_class) == 0:
         avg_sim = 0.0
         print(info_type)
@@ -311,7 +311,7 @@ def pre_process(gen_class, ground_class, info_type, model_id=None, embedding_bac
         return coverage_info, coverage_info_new, res, avg_sim, all_concepts
 
     if len(ground_class) == 0:
-        # 没有 gold，则无法做 gold->pred；但 pred->gold 的 FP 应该全罚满
+       
         for c in gen_class:
             temp = {"pred": c, "ground": None, "sim": 0.0}
             res.append(temp)
