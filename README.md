@@ -293,12 +293,12 @@ The full structural analysis of three ontologies:
 
 | Dataset | Strategy | Precision | Recall | F1-score | Coverage |
 |---|---|---:|---:|---:|---:|
-| Infrastructure | Exact | 0.071 | 0.024 | 0.037 | 0.025 |
-| Infrastructure | Lexical | 0.750 | 0.500 | 0.600 | 0.500 |
-| Infrastructure | Semantic | 0.667 | 0.750 | 0.705 | 0.605 |
-| Vehicle Census (VCO) | Exact | 0.333 | 0.333 | 0.333 | 0.400 |
-| Vehicle Census (VCO) | Lexical | 0.733 | 0.643 | 0.685 | 0.700 |
-| Vehicle Census (VCO) | Semantic | 0.708 | 0.846 | 0.772 | 0.846 |
-| Video Game (VGO) | Exact | 0.250 | 0.167 | 0.200 | 0.135 |
-| Video Game (VGO) | Lexical | 0.690 | 0.735 | 0.712 | 0.676 |
-| Video Game (VGO) | Semantic | 0.924 | 0.712 | 0.804 | 0.712 |
+| Infrastructure | Exact | 0.071 | 0.025 | 0.037 | 0.025 |
+| Infrastructure | Lexical | 0.771 | 0.491 | 0.600 | 0.491 |
+| Infrastructure | Semantic | _0.844_ | _0.605_ | _0.705_ | _0.605_ |
+| Vehicle Census (VCO) | Exact | 0.267 | 0.444| 0.333 | 0.400 |
+| Vehicle Census (VCO) | Lexical | 0.609 | 0.783 | 0.685 | 0.783|
+| Vehicle Census (VCO) | Semantic | _0.711_ |_0.846_ | _0.772_ | _0.846_ |
+| Video Game (VGO) | Exact | 0.385 | 0.135 | 0.200 | 0.135 |
+| Video Game (VGO) | Lexical | 0.895 | 0.591 | 0.712 | 0.591|
+| Video Game (VGO) | Semantic | _0.924_ | _0.712_ | _0.804_ | _0.712_ |
