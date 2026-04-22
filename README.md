@@ -9,13 +9,13 @@ This repository provides the artifact for `MASEO`, a research-oriented multi-age
 
 masoe/
 ├── dataset/          # Contains competency questions, generated & gold standard ontologies, run-time log
-├── src/              # The core source code for the multi-agent system.
+├── src/              # The source code for MASEO and ontology evaluation.
 │   └── ...           # (Includes agent implementations, evaluation code)
 └── README.md         # This file.
 
 ```
 
-## MASOE Structural Overview
+### MASOE Structural Overview
 
 The pipeline consists of four sequential stages:
 
@@ -30,9 +30,8 @@ The illustration of the MASOE framework:
 
 ![Multi-Agent Ontology Generation Pipeline](src/image/maseo_framework.png)
 
----
 
-## Features
+### Features
 
 - **End-to-end automation** — from a list of CQs to a validated ontology
 - **Role-based agents** — each stage is handled by a dedicated LLM agent with a specific instruction and responsibility
@@ -40,7 +39,7 @@ The illustration of the MASOE framework:
 
 ---
 
-## Requirements
+## MASEO Execution
 
 ### Python dependencies
 
@@ -48,7 +47,7 @@ The illustration of the MASOE framework:
 pip install agno rdflib requests beautifulsoup4 pydantic
 ```
 
-### External tools
+### External tools requirements
 
 | Tool | Purpose | Setup |
 |------|---------|-------|
@@ -56,11 +55,9 @@ pip install agno rdflib requests beautifulsoup4 pydantic
 | [OOPS! REST API](https://oops.linkeddata.es/) | Ontology pitfall detection | No local setup required — uses the public REST endpoint |
 | Java (JRE 8+) | Required to run HermiT | `sudo apt install default-jre` |
 
----
+### Configuration
 
-## Configuration
-
-Before running, update the following constants at the top of `agent_framework.py`:
+Before running, update the following constants:
 
 ```bash
 # Instaill java and ollama in you system
@@ -75,50 +72,46 @@ Make the changes in the `agent_framework.py` to ensure the correctness of variab
 ```python
 
 # Path to your OOPS! request template
-REQUEST_TEMPLATE = "/path/to/oops_request_template.xml"
+REQUEST_TEMPLATE = "src/templates/oops_request_template.xml"
 
 # Path to HermiT JAR inside reason_ontology()
 "java", "-jar", "/path/to/HermiT.jar"
 ```
----
-
-## Usage
-
-```bash
-python agent_framework.py \
-    --api_key      YOUR_DEEPSEEK_API_KEY \
-    --cqs_file     path/to/competency_questions.json \
-    --save_file    path/to/output_ontology.owl \
-    --agent_method true
-```
-
-### Arguments
+### Execution Command Line
 
 | Argument | Required | Description |
 |----------|----------|-------------|
 | `--api_key` | Yes | DeepSeek API key |
 | `--cqs_file` | Yes | Path to a JSON file containing the list of competency questions |
 | `--save_file` | Yes | Path where the final OWL ontology will be saved |
-| `--agent_method` | No | `true` runs the full 4-stage pipeline; `false` runs generation only (default: `false`) |
+| `--agent_method` | No | `true` runs the full 4-stage pipeline; `false` runs generation only (default: `true`) |
 
-### CQs file format
-
-The CQs file should be a JSON array of strings:
-
-```json
-[
-  "What is the genre of a game?",
-  "Which players have purchased an in-app item?",
-  "What is the username of a player?",
-...
-]
+```bash
+python cli.py \
+    --api_key      YOUR_DEEPSEEK_API_KEY \
+    --cqs_file     dataset/competency_questions/VGO.json \
+    --save_file    dataset/generated_ontology/Gen_VGO.owl \
+    --agent_method true
 ```
 
+
+### Input File Format
+
+The input file that contains Competency Questions should be a JSON array of strings:
+
+```json
+{
+  "CQ1": "What is the genre of a game?",
+  "CQ2": "Which players have purchased an in-app item?",
+  "CQ3": "What is the username of a player?",
+...
+}
+```
 ---
 
-## Ontology Entity Structure
+## Generated Ontology Structure
 
-Each generated ontology entity is a structured object with the following fields:
+The MASEO pipeline generates ontology follows the RDF/XML format, as a series of ontology entity. Each generated ontology entity is a structured object with the following fields:
 
 | Field | Definition | Example value |
 |-------|-----------|---------------|
@@ -128,6 +121,7 @@ Each generated ontology entity is a structured object with the following fields:
 | **Rationale** (`vaem:rationale`) | Records the justification for entity creation or modification across refinement iterations. | `"Derived from CQ [number] about the username of a player."` |
 | **Source** (`dc:Source`) | Records the CQ or validation feedback from which the entity or revision was derived. | `"What is the username of the player?"` |
 | **Subclass of** (`rdfs:subClassOf`) | (Classes only) Records subclass relations or logical restrictions involving the class. | `:Player rdfs:SubClassOf :Human` |
+| **Disjointness** (`owl:disjointWith`) | (Classes only) Declares that two classes are mutually exclusive, meaning that no individual can belong to both classes at the same time. | `:Player owl:disjointWith :Game` |
 | **Domain** (`rdfs:domain`) | (Properties only) Specifies the class to which a property applies. | `:hasUsername rdfs:domain :Player` |
 | **Range** (`rdfs:range`) | (Properties only) Specifies the value type or class associated with a property. | `:hasUsername rdfs:range xsd:string` |
 | **Other Axioms** | Captures logical constraints as structured XML comments to preserve modeling intent. | `<!-- Axiom: Disjoint with Game -->` (captured as comments) |
@@ -136,13 +130,12 @@ Each generated ontology entity is a structured object with the following fields:
 
 ```xml
 <owl:Class rdf:about="http://www.semanticweb.org/myontology#Player">
-  <!-- Axiom: disjointWith NPC -->
   <dc:source>CQ1, CQ3; HermiT: conflict; OOPS P10</dc:source>
   <vaem:rationale>
     [Logical Consistency Agent] Fixed subClassOf error;
     [Ontology Pitfall Agent] Added disjointness.
   </vaem:rationale>
-  <!-- Axiom: disjointWith NPC -->
+  <owl:disjointWith rdf:resource='#GameEvent'/>
 </owl:Class>
 
 <owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#triggersEvent">
@@ -155,12 +148,15 @@ Each generated ontology entity is a structured object with the following fields:
 
 ---
 
-## Evaluation
+
+
+## Generated Ontology Evaluation
 
 We evaluate MASEO framework across two complementary dimensions in three ontology generation case studies: Infrastructure Ontology, Vehicle Census Ontology (VCO), and Video Game Ontology (VGO).
 1. **Structural characteristics & CQ coverage**: The first dimension combines structural analysis and CQ requirement coverage. Structural characteristics are derived from ontology diagrams, while CQ coverage is assessed from provenance records through expert inspection.
 2. **Concept label matching & concept coverage**: The second dimension evaluates the alignment between concept labels in the generated ontologies and those in the corresponding gold-standard ontologies. We assess this alignment using three matching strategies, namely exact match, lexical match, and semantic match, and report precision, recall, F1-score, and concept coverage for each strategy.
-## Datasets
+3. 
+### Evaluation Datasets Selection
 
 | Dataset | Language | CQs | Gold Standard |
 |---|---|---:|---|
@@ -168,21 +164,21 @@ We evaluate MASEO framework across two complementary dimensions in three ontolog
 | Vehicle Census Ontology (VCO) | Spanish | 28 | [Gold_VCO.owl](https://github.com/oeg-upm/maseo/blob/main/dataset/gold_standard_ontology/Gold_VCO.owl) |
 | Video Game Ontology (VGO) | English | 68 | [Gold_VGO.owl](https://github.com/oeg-upm/maseo/blob/main/dataset/gold_standard_ontology/Gold_VGO.owl) |
 
-## Evaluation Perspectives
+### Evaluation Perspectives
 
-### Structural Analysis
+#### Structural Analysis
 
 To compare the structural characteristics (e.g., number of classes, object properties, datatype properties, and hierarchy structure) for ontologies, visualization of the ontology is adopted to conduct the analysis. In this project, we have adopted `owl2diagram` to generate the diagrams.
 
 
-### CQ Coverage
+#### CQ Coverage
 
 The proportion of input CQs that can be traced to at least one ontology element through provenance records. Therefore, we adopted CQ coverage to evaluate how many CQs are actually used in the ontology. Here is the calculation process of the CQ Coverage. 
 ```math
 CQCoverage = \frac{|Q_{covered}|}{|Q_{input}|}
 ```
 
-### Concept Label Matching
+#### Concept Label Matching
 
 Concept label matching evaluates whether a concept label in the generated ontology can be aligned with a concept label in the corresponding gold-standard ontology.
 
@@ -207,7 +203,7 @@ R=\frac{TP}{TP+FN}, \quad
 F1=\frac{2PR}{P+R}
 ```
 
-### Concept Coverage
+#### Concept Coverage
 
 To further evaluation for concept label mathcing, we adopted **Concept Coverage** to measure how many concepts in gold-standard ontology are matched.
 
@@ -219,9 +215,7 @@ ConceptCoverage^m = \frac{|C^m_{match}|}{|C_{gold}|}, \quad m \in \{exact, lex, 
 - `C_gold` is the set of gold-standard concepts
 - `C_match^m` is the set of concepts matched under strategy `m`
 
-## Execution
-
-### Structural Analysis
+#### Structural Analysis
 
 Here is the command to generate the diagram for the generated/gold standard ontology:
 
@@ -235,7 +229,7 @@ python -m owl2diagram \
     gen_VCO.md
 ```
 
-### Concept label matching
+#### Concept label matching
 
 Here is the command to evaluate the generated ontology to the gold standard ontology. `generate_onto_file_path` refers to the local path to the generated ontology, `ground_onto_file_path` refers to the local path to the gold standard ontology.
 
@@ -246,9 +240,9 @@ python eva_.py \
     --ground_onto_file_path   ../dataset/gold_standard_ontology/Gold_VCO.owl
 ```
 
-## Result
+### Evaluation Result
 
-### Structural Analysis
+#### Structural Analysis
 
 Here is an example of the result of  structural analysis: 
 
@@ -272,7 +266,7 @@ The full structural analysis of three ontologies:
 | Linked CQs | 5 / 5 | 28 / 17 | 68 / 37 |
 | CQ Coverage | 100.0% | 60.7% | 54.4% |
 
-### CQ Coverage
+#### CQ Coverage
 
 | Dataset | Input CQs | Covered CQs | Coverage |
 |---|---:|---:|---:|
@@ -280,7 +274,7 @@ The full structural analysis of three ontologies:
 | Vehicle Census (VCO) | 28 | 17 | 60.7% |
 | Video Game (VGO) | 68 | 37 | 54.4% |
 
-### Class Counts Used for Concept Label Matching
+#### Class Counts Used for Concept Label Matching
 
 | Dataset | Generated Classes | Gold-standard Classes |
 |---|---:|---:|
@@ -289,16 +283,17 @@ The full structural analysis of three ontologies:
 | Video Game (VGO) | 13 | 37 |
 
 
-### Concept Label Matching Results
+#### Concept Label Matching Results
 
 | Dataset | Strategy | Precision | Recall | F1-score | Coverage |
 |---|---|---:|---:|---:|---:|
-| Infrastructure | Exact | 0.071 | 0.025 | 0.037 | 0.025 |
-| Infrastructure | Lexical | 0.771 | 0.491 | 0.600 | 0.491 |
-| Infrastructure | Semantic | 0.844 | 0.605 | 0.705 | 0.605 |
-| Vehicle Census (VCO) | Exact | 0.267 | 0.444 | 0.333 | 0.444 |
-| Vehicle Census (VCO) | Lexical | 0.609 | 0.783 | 0.685 | 0.783 |
-| Vehicle Census (VCO) | Semantic | 0.711 | 0.846 | 0.772 | 0.846 |
-| Video Game (VGO) | Exact | 0.385 | 0.135 | 0.200 | 0.135 |
-| Video Game (VGO) | Lexical | 0.895 | 0.591 | 0.712 | 0.591 |
+| Infrastructure | Exact | 0.071 | 0.024 | 0.037 | 0.025 |
+| Infrastructure | Lexical | 0.750 | 0.500 | 0.600 | 0.500 |
+| Infrastructure | Semantic | 0.667 | 0.750 | 0.705 | 0.605 |
+| Vehicle Census (VCO) | Exact | 0.333 | 0.333 | 0.333 | 0.400 |
+| Vehicle Census (VCO) | Lexical | 0.733 | 0.643 | 0.685 | 0.700 |
+| Vehicle Census (VCO) | Semantic | 0.708 | 0.846 | 0.772 | 0.846 |
+| Video Game (VGO) | Exact | 0.250 | 0.167 | 0.200 | 0.135 |
+| Video Game (VGO) | Lexical | 0.690 | 0.735 | 0.712 | 0.676 |
 | Video Game (VGO) | Semantic | 0.924 | 0.712 | 0.804 | 0.712 |
+
