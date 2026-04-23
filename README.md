@@ -107,7 +107,8 @@ The input file that contains Competency Questions should be a JSON array of stri
 ### Output File Format
 The internal representation and output format is available at our documentation [TBD]
 
-
+### Documentation
+Additional documentation of the project is available at https://maseo.readthedocs.io/en/latest/?badge=latest
 
 
 ## Acknowledgements
