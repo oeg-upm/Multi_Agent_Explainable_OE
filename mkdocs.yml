@@ -1,0 +1,20 @@
+extra_css:
+  - stylesheets/mkdocs.css
+site_name: MASEO documentation
+nav:
+  - Home: index.md
+  - Install: install.md
+  - Output: output.md
+  - Evaluation: eval.md
+
+
+theme:
+  name: material
+  features:
+    - navigation.expand
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
