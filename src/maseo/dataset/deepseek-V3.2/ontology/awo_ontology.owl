@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  An animal is a living organism that typically moves and consumes organic matter.
+  Animal
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointness axioms: disjoint with Plant, disjoint with PlantPart: To address pitfall 'lack of disjointness axioms'</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Plant'/><owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#PlantPart'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  A plant is a living organism that typically produces its own food via photosynthesis.
+  Plant
+  <vaem:rationale>[Pitfall Resolution Agent] No direct change, but disjointness with Animal now asserted: To address pitfall 'lack of disjointness axioms'</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  A plant part is a portion of a plant, such as leaves, stems, roots, or fruits, that can be consumed by animals.
+  Plant Part
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjointness axioms: disjoint with Animal: To address pitfall 'lack of disjointness axioms'</vaem:rationale>
+  <dc:source>(pitfall) The ontology lacks disjoint axioms between classes or between properties that should be defined as disjoint.</dc:source>
+  <owl:disjointWith rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  Indicates that an organism consumes another organism or a plant part.
+  eats
+  <vaem:rationale>[Pitfall Resolution Agent] Added domain Animal, added inverse property isEatenBy: To address pitfalls: missing domain/range and missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) Object and/or datatype properties without domain or range (or none of them) are included in the ontology.
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#isEatenBy'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsAnimal">
+  Indicates that an organism eats an animal.
+  eats animal
+  <vaem:rationale>[Pitfall Resolution Agent] Added domain Animal, added inverse property isEatenByAnimal: To address pitfalls: missing domain/range and missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) Object and/or datatype properties without domain or range (or none of them) are included in the ontology.
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#isEatenByAnimal'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlant">
+  Indicates that an organism eats a plant.
+  eats plant
+  <vaem:rationale>[Pitfall Resolution Agent] Added domain Animal, added inverse property isEatenByPlant: To address pitfalls: missing domain/range and missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) Object and/or datatype properties without domain or range (or none of them) are included in the ontology.
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#isEatenByPlant'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  Indicates that an organism eats a plant part.
+  eats plant part
+  <vaem:rationale>[Pitfall Resolution Agent] Added domain Animal, added inverse property isEatenByPlantPart: To address pitfalls: missing domain/range and missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) Object and/or datatype properties without domain or range (or none of them) are included in the ontology.
+    (pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#isEatenByPlantPart'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEatenBy">
+  Inverse of eats. Indicates that an organism is eaten by another organism.
+  is eaten by
+  <vaem:rationale>[Pitfall Resolution Agent] Created as inverse of eats: To address pitfall: missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eats'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEatenByAnimal">
+  Inverse of eatsAnimal. Indicates that an animal is eaten by another animal.
+  is eaten by animal
+  <vaem:rationale>[Pitfall Resolution Agent] Created as inverse of eatsAnimal: To address pitfall: missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eatsAnimal'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEatenByPlant">
+  Inverse of eatsPlant. Indicates that a plant is eaten by an animal.
+  is eaten by plant
+  <vaem:rationale>[Pitfall Resolution Agent] Created as inverse of eatsPlant: To address pitfall: missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eatsPlant'/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#isEatenByPlantPart">
+  Inverse of eatsPlantPart. Indicates that a plant part is eaten by an animal.
+  is eaten by plant part
+  <vaem:rationale>[Pitfall Resolution Agent] Created as inverse of eatsPlantPart: To address pitfall: missing inverse relationships</vaem:rationale>
+  <dc:source>(pitfall) This pitfall appears when any relationship does not have an inverse relationship defined within the ontology.</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <owl:inverseOf rdf:resource='http://www.semanticweb.org/myontology#eatsPlantPart'/>
+</owl:ObjectProperty>
+
+  <!-- owl:DatatypeProperty declarations -->
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/myontology#hasDietaryType">
+  Indicates the dietary classification of an animal: 'carnivore', 'herbivore', or 'omnivore'.
+  has dietary type
+  <vaem:rationale></vaem:rationale>
+  <dc:source></dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+</rdf:RDF>
