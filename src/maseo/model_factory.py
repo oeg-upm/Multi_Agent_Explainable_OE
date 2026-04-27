@@ -20,7 +20,6 @@ def build_model(config: Config):
 
         api_key = config.get_api_key()
         if api_key:
-            # DeepSeek SDK reads DEEPSEEK_API_KEY from env
             os.environ["DEEPSEEK_API_KEY"] = api_key
 
         kwargs = {"id": config.model_id}
