@@ -1,0 +1,36 @@
+# Batch manifest for run_batch.py
+#
+# Each entry needs `provider` and `id`. Optional per-model overrides:
+#   max_tokens, temperature, api_key, host (ollama), base_url.
+# API keys are best supplied via environment variables
+# (OPENROUTER_API_KEY, DEEPSEEK_API_KEY) rather than committed here.
+
+models:
+
+  - provider: openrouter
+    id: qwen/qwen3.6-27b
+
+  - provider: openrouter
+    id: qwen/qwen3.6-35b-a3b
+    
+  - provider: openrouter
+    id: qwen/qwen3.6-flash
+    
+  - provider: openrouter
+    id: qwen/qwen3.6-plus
+
+  - provider: openrouter
+    id: google/gemma-4-26b-a4b-it
+
+  - provider: openrouter
+    id: google/gemma-4-31b-it
+    
+  - provider: openrouter
+    id: deepseek/deepseek-v3.2
+    
+  - provider: deepseek
+    id: deepseek-v4-pro
+    
+  - provider: deepseek
+    id: deepseek-v4-flash
+    
