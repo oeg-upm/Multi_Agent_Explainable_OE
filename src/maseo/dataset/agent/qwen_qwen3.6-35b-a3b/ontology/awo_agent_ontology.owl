@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Organism">
+  <rdfs:comment xml:lang="en">A living being capable of growth, reproduction, and response to stimuli.</rdfs:comment>
+  <rdfs:label xml:lang="en">Organism</rdfs:label>
+  <dc:source>(competency_question) CQ1, CQ6</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A multicellular, eukaryotic organism in the kingdom Animalia, typically capable of voluntary movement.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axiom with Plant and preserved subClassOf Organism: Resolved OOPS pitfall: lack of disjoint axioms between mutually exclusive classes.</vaem:rationale>
+  <dc:source>(competency_question) CQ1, CQ2, CQ3, CQ7, CQ14</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Organism"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Plant"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A multicellular organism of the kingdom Plantae, generally photosynthetic.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axiom with Animal and preserved subClassOf Organism: Resolved OOPS pitfall: lack of disjoint axioms between mutually exclusive classes.</vaem:rationale>
+  <dc:source>(competency_question) CQ4, CQ6</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Organism"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Animal"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that primarily feeds on plants or plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms with Carnivore and Omnivore, preserved subClassOf Animal: Resolved OOPS pitfall: lack of disjoint axioms between mutually exclusive classes.</vaem:rationale>
+  <dc:source>(competency_question) CQ2, CQ3</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Animal"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Carnivore"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Omnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that primarily feeds on flesh or other animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms with Herbivore and Omnivore, preserved subClassOf Animal: Resolved OOPS pitfall: lack of disjoint axioms between mutually exclusive classes.</vaem:rationale>
+  <dc:source>(competency_question) CQ14</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Animal"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Herbivore"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Omnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds on both plant and animal matter.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Added disjoint axioms with Herbivore and Carnivore, preserved subClassOf Animal: Resolved OOPS pitfall: lack of disjoint axioms between mutually exclusive classes.</vaem:rationale>
+  <dc:source>(competency_question) CQ3</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Animal"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Herbivore"/><owl:disjointWith rdf:resource="http://www.semanticweb.org/myontology#Carnivore"/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A distinct structural component of a plant, such as leaves, roots, or fruits.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <dc:source>(competency_question) CQ3, CQ4</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Lion">
+  <rdfs:comment xml:lang="en">A large cat species native to Africa and India, scientifically known as Panthera leo.</rdfs:comment>
+  <rdfs:label xml:lang="en">Lion</rdfs:label>
+  <dc:source>(competency_question) CQ4</dc:source>
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/myontology#Carnivore"/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an organism to another organism it consumes for nutrition.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Defined inverse property eatenBy: Resolved OOPS pitfall: missing inverse relationship for eats.</vaem:rationale>
+  <dc:source>(competency_question) CQ1, CQ6, CQ7</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatsPlantPart">
+  <rdfs:comment xml:lang="en">Relates an organism to a specific plant part it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats plant part</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Defined inverse property eatenByOrganism: Resolved OOPS pitfall: missing inverse relationship for eatsPlantPart.</vaem:rationale>
+  <dc:source>(competency_question) CQ3, CQ4, CQ14</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatenBy">
+  <rdfs:comment xml:lang="en">Inverse of eats. Relates an organism to the organism that consumes it.</rdfs:comment>
+  <rdfs:label xml:lang="en">eaten by</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created new property as inverse of eats: Resolved OOPS pitfall: missing inverse relationship.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship (owl:inverseOf)</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#eats"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eatenByOrganism">
+  <rdfs:comment xml:lang="en">Inverse of eatsPlantPart. Relates a plant part to the organism that consumes it.</rdfs:comment>
+  <rdfs:label xml:lang="en">eaten by organism</rdfs:label>
+  <vaem:rationale>[Pitfall Resolution Agent] Created new property as inverse of eatsPlantPart: Resolved OOPS pitfall: missing inverse relationship.</vaem:rationale>
+  <dc:source>(pitfall) Missing inverse relationship (owl:inverseOf)</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#PlantPart"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <owl:inverseOf rdf:resource="http://www.semanticweb.org/myontology#eatsPlantPart"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<rdf:RDF xml:base="http://www.semanticweb.org/myontology#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:vaem="http://www.linkedmodel.org/schema/vaem#">
+ 
+  <owl:Ontology rdf:about="http://www.semanticweb.org/myontology#"/>
+
+  <!-- owl:Class declarations -->
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Organism">
+  <rdfs:comment xml:lang="en">A living entity capable of consuming other organisms or their parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Organism</rdfs:label>
+  <dc:source>(competency_question) CQ1, CQ2, CQ3, CQ4, CQ6, CQ7, CQ14</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Animal">
+  <rdfs:comment xml:lang="en">A multicellular eukaryotic organism that typically obtains food by ingestion.</rdfs:comment>
+  <rdfs:label xml:lang="en">Animal</rdfs:label>
+  <dc:source>(competency_question) CQ1, CQ2, CQ3, CQ4, CQ6, CQ7, CQ14</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Plant">
+  <rdfs:comment xml:lang="en">A multicellular eukaryotic organism that typically produces its own food, though some species can consume animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant</rdfs:label>
+  <dc:source>(competency_question) CQ3, CQ4, CQ6, CQ14</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Organism'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#PlantPart">
+  <rdfs:comment xml:lang="en">A structural component of a plant, such as a leaf, stem, root, or fruit, which can be consumed.</rdfs:comment>
+  <rdfs:label xml:lang="en">Plant Part</rdfs:label>
+  <dc:source>(competency_question) CQ3, CQ4, CQ14</dc:source>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Herbivore">
+  <rdfs:comment xml:lang="en">An animal that primarily feeds on plants or plant parts.</rdfs:comment>
+  <rdfs:label xml:lang="en">Herbivore</rdfs:label>
+  <dc:source>(competency_question) CQ2, CQ3</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Carnivore">
+  <rdfs:comment xml:lang="en">An animal that primarily feeds on other animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Carnivore</rdfs:label>
+  <dc:source>(competency_question) CQ1, CQ14</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Omnivore">
+  <rdfs:comment xml:lang="en">An animal that feeds on both plants and animals.</rdfs:comment>
+  <rdfs:label xml:lang="en">Omnivore</rdfs:label>
+  <dc:source>(competency_question) CQ3</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Animal'/>
+</owl:Class>
+
+<owl:Class rdf:about="http://www.semanticweb.org/myontology#Lion">
+  <rdfs:comment xml:lang="en">A large feline typically classified as a carnivore.</rdfs:comment>
+  <rdfs:label xml:lang="en">Lion</rdfs:label>
+  <dc:source>(competency_question) CQ4</dc:source>
+  <rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#Carnivore'/>
+</owl:Class>
+
+  <!-- owl:ObjectProperty declarations -->
+
+<owl:ObjectProperty rdf:about="http://www.semanticweb.org/myontology#eats">
+  <rdfs:comment xml:lang="en">Relates an organism to the organism or plant part it consumes.</rdfs:comment>
+  <rdfs:label xml:lang="en">eats</rdfs:label>
+  <dc:source>(competency_question) CQ1, CQ3, CQ4, CQ6, CQ7, CQ14</dc:source>
+  <rdfs:domain rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+  <rdfs:range rdf:resource="http://www.semanticweb.org/myontology#Organism"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
