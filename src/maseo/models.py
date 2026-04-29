@@ -35,10 +35,18 @@ class Entity(BaseModel):
         description="The local name (no spaces, camelCase). Will be combined with the base URI."
     )
     Comment: str = Field(
-        description="The definition of the term, as plain text. Will be wrapped in <rdfs:comment>...</rdfs:comment>."
+        description=(
+            "The definition of the term, as plain text (no XML wrapper). "
+            "It will be emitted as: "
+            "<rdfs:comment xml:lang=\"en\">your text</rdfs:comment>."
+        )
     )
     Label: str = Field(
-        description="Human readable label, as plain text. Will be wrapped in <rdfs:label>...</rdfs:label>."
+        description=(
+            "Human readable label, as plain text (no XML wrapper). "
+            "It will be emitted as: "
+            "<rdfs:label xml:lang=\"en\">your text</rdfs:label>."
+        )
     )
     Rationale: List[RationaleEntry] = Field(
         default_factory=list,
@@ -162,27 +170,6 @@ class Entity(BaseModel):
         return f"<dc:source>{entries}</dc:source>"
  
     @staticmethod
-    def _wrap_comment(value: str) -> str:
-
-        v = (value or "").strip()
-        if not v:
-            return "<rdfs:comment></rdfs:comment>"
-        if v.startswith("<rdfs:comment") and v.endswith("</rdfs:comment>"):
-            return v
-
-        return f"<rdfs:comment>{v}</rdfs:comment>"
- 
-    @staticmethod
-    def _wrap_label(value: str) -> str:
-        """Same as _wrap_comment but for <rdfs:label>."""
-        v = (value or "").strip()
-        if not v:
-            return "<rdfs:label></rdfs:label>"
-        if v.startswith("<rdfs:label") and v.endswith("</rdfs:label>"):
-            return v
-        return f"<rdfs:label>{v}</rdfs:label>"
- 
-    @staticmethod
     def _resolve_uri(value: str, base_uri: str) -> str:
 
         v = value.strip()
@@ -195,7 +182,31 @@ class Entity(BaseModel):
         if v.startswith("#") or v.startswith(":"):
             v = v[1:]
         return f"{base_uri}{v}"
- 
+
+    @staticmethod
+    def _wrap_comment(value: str, lang: str = "en") -> str:
+        """
+        Emit a <rdfs:comment xml:lang="en">...</rdfs:comment> element.
+        If the model already returned a wrapped <rdfs:comment ...> element,
+        pass it through unchanged.
+        """
+        v = (value or "").strip()
+        if not v:
+            return ""
+        if v.startswith("<rdfs:comment") and v.endswith("</rdfs:comment>"):
+            return v
+        return f'<rdfs:comment xml:lang="{lang}">{v}</rdfs:comment>'
+
+    @staticmethod
+    def _wrap_label(value: str, lang: str = "en") -> str:
+        """Same as _wrap_comment but for <rdfs:label>."""
+        v = (value or "").strip()
+        if not v:
+            return ""
+        if v.startswith("<rdfs:label") and v.endswith("</rdfs:label>"):
+            return v
+        return f'<rdfs:label xml:lang="{lang}">{v}</rdfs:label>'
+
     def to_owl(self, base_uri: str) -> str:
         uri = self._resolve_uri(self.Name, base_uri)
         comment_xml = self._wrap_comment(self.Comment)
@@ -205,8 +216,10 @@ class Entity(BaseModel):
  
         if self.Type == "owl:Class":
             lines = [f'<owl:Class rdf:about="{uri}">']
-            lines.append(f"  {comment_xml}")
-            lines.append(f"  {label_xml}")
+            if comment_xml:
+                lines.append(f"  {comment_xml}")
+            if label_xml:
+                lines.append(f"  {label_xml}")
             if rationale_xml:
                 lines.append(f"  {rationale_xml}")
             if source_xml:
@@ -217,8 +230,10 @@ class Entity(BaseModel):
  
         elif self.Type == "owl:ObjectProperty":
             lines = [f'<owl:ObjectProperty rdf:about="{uri}">']
-            lines.append(f"  {comment_xml}")
-            lines.append(f"  {label_xml}")
+            if comment_xml:
+                lines.append(f"  {comment_xml}")
+            if label_xml:
+                lines.append(f"  {label_xml}")
             if rationale_xml:
                 lines.append(f"  {rationale_xml}")
             if source_xml:
@@ -241,8 +256,10 @@ class Entity(BaseModel):
  
         elif self.Type == "owl:DatatypeProperty":
             lines = [f'<owl:DatatypeProperty rdf:about="{uri}">']
-            lines.append(f"  {comment_xml}")
-            lines.append(f"  {label_xml}")
+            if comment_xml:
+                lines.append(f"  {comment_xml}")
+            if label_xml:
+                lines.append(f"  {label_xml}")
             if rationale_xml:
                 lines.append(f"  {rationale_xml}")
             if source_xml:
@@ -328,4 +345,3 @@ class Answer(BaseModel):
         body = "\n\n".join(sections)
         document = f"{header}\n\n{body}\n\n{footer}"
         return self._sanitize_uris(document, base_uri)
- 

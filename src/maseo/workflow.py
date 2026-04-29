@@ -68,7 +68,9 @@ class MASEOWorkflow(Workflow):
             "ontology_generation",
             competency_questions=self.cqs,
         )
+        print(gen_prompt)
         gen_response = self.ontology_gen_agent.run(gen_prompt)
+        print(gen_response)
         return parse_answer(
             gen_response, agent_name="Ontology Generation Agent"
         ).to_owl_document(self.base_uri)

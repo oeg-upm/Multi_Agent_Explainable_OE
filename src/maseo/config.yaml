@@ -2,7 +2,9 @@ ontology:
   base_uri: "http://www.semanticweb.org/myontology#"
 
 model:
-  provider: "deepseek"         
+  provider: "openrouter" 
+  max_tokens: 16384
+  temperature: 0.0        
 
   ollama:
     id: "qwen3.5:27b"
@@ -10,6 +12,10 @@ model:
 
   deepseek:
     id: "deepseek-reasoner"
+    api_key: ""
+
+    openrouter:
+    id: "google/gemma-4-31b-it"
     api_key: ""
 
 agents:

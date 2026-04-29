@@ -87,7 +87,7 @@ def main() -> None:
     print("WORKFLOW COMPLETED SUCCESSFULLY!")
     print("=" * 50)
     print(f"Is valid OWL: {is_owl(ontology)}")
-
+ 
  
     save_path = Path(args.save_file)
     save_path.parent.mkdir(parents=True, exist_ok=True)
