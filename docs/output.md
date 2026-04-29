@@ -1,5 +1,39 @@
 
-## Generated Ontology Structure
+# Output
+
+## Agentic Response
+
+
+Here is the raw agent response from maseo agents, which indicates that agents captured the conceptualization of the ontology engineer process. Here is the conceptualization structure of the generated raw response. After generating the raw agent response, the maseo pipeline will parse the response into legal ontology source code.
+
+```json
+[
+  {
+  "Type": "owl:Class",
+  "Name": "Bouquet",
+  "Comment": "The aroma of a wine, particularly after aging.",
+  "Label": "Bouquet",
+  "Rationale": [
+    {
+      "agent": "Ontology Generation Agent",
+      "change": "Created class Bouquet",
+      "reason": "Specific characteristic mentioned in CQ6."
+    }
+  ],
+  "Source": [
+    {
+      "sourcetype": "competency_question",
+      "content": "CQ6: Does a bouquet or body of a specific wine change with vintage year?"
+    }
+  ],
+  "Axiom": "<rdfs:subClassOf rdf:resource='http://www.semanticweb.org/myontology#WineCharacteristic'/>"
+ },
+ ...
+]
+```
+
+
+## Generated Entity Structure
 
 The MASEO pipeline generates ontology follows the RDF/XML format, as a series of ontology entity. Each generated ontology entity is a structured object with the following fields:
 
