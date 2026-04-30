@@ -5,6 +5,7 @@ nav:
   - Home: index.md
   - Install: install.md
   - Output: output.md
+  - Configuration: configuration.md
   - Evaluation: eval.md
 
 

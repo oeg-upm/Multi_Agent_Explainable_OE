@@ -185,11 +185,6 @@ class Entity(BaseModel):
 
     @staticmethod
     def _wrap_comment(value: str, lang: str = "en") -> str:
-        """
-        Emit a <rdfs:comment xml:lang="en">...</rdfs:comment> element.
-        If the model already returned a wrapped <rdfs:comment ...> element,
-        pass it through unchanged.
-        """
         v = (value or "").strip()
         if not v:
             return ""
@@ -199,7 +194,6 @@ class Entity(BaseModel):
 
     @staticmethod
     def _wrap_label(value: str, lang: str = "en") -> str:
-        """Same as _wrap_comment but for <rdfs:label>."""
         v = (value or "").strip()
         if not v:
             return ""

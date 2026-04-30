@@ -9,16 +9,16 @@
 This repository provides the artifact for `MASEO`, a research-oriented multi-agent system that automated generate ontologies from competency questions, with a built-in focus on explainability. It aims to make the process of ontology generation more transparent, modular, and intelligent by distributing tasks among specialized agents. Each specialized agent is designed to keep track the logic behind each entity in generated ontology. 
 
 
-### MASOE Structural Overview
+## MASOE Structural Overview
 
 The pipeline consists of four sequential stages:
 
-| Agent | Model | Responsibility |
+| Agent | Responsibility | External Tools |
 |-------|-------|----------------|
-| `Ontology Generation Agent` | `deepseek-reasoner` | Generates the initial OWL ontology from CQs |
-| `Syntax Repair Agent` | `deepseek-reasoner` | Fixes RDF/XML syntax errors reported by the parser |
-| `Logical Consistency Agent` | `deepseek-reasoner` | Repairs logical inconsistencies reported by HermiT |
-| `Pitfall Resolution Agent` | `deepseek-reasoner` | Resolves ontology modeling pitfalls reported by OOPS! |
+| `Ontology Generation Agent` |  Generates the initial OWL ontology from CQs | None |
+| `Syntax Repair Agent` | Fixes RDF/XML syntax errors reported by the parser | [rdflib](https://rdflib.readthedocs.io/en/stable/) |
+| `Logical Consistency Agent` | Repairs logical inconsistencies reported by HermiT | [HermiT Reasoner](http://www.hermit-reasoner.com/) |
+| `Pitfall Resolution Agent` | Resolves ontology modeling pitfalls reported by OOPS! | [OOPS!](https://oops.linkeddata.es/) |
 
 The illustration of the MASOE framework:
 
@@ -31,16 +31,6 @@ The illustration of the MASOE framework:
 - **Role-based agents** — each stage is handled by a dedicated LLM agent with a specific instruction and responsibility
 - **Provenance tracking** — every ontology entity carries an append-only `vaem:rationale` log attributed to the agent that made each change, and a `dc:source` log linking each change back to the CQ, pitfall, or error that motivated it
 
----
-
-## Installation
-
-### Python dependencies
-
-```bash
-pip install agno rdflib requests beautifulsoup4 pydantic
-```
-
 ### External tools requirements
 
 | Tool | Purpose | Setup |
@@ -49,66 +39,59 @@ pip install agno rdflib requests beautifulsoup4 pydantic
 | [OOPS! REST API](https://oops.linkeddata.es/) | Ontology pitfall detection | No local setup required — uses the public REST endpoint |
 | Java (JRE 8+) | Required to run HermiT | `sudo apt install default-jre` |
 
-### Configuration
 
-<!-- 
-Before running, update the following constants:
+## Execution
 
-```bash
-# Install java and ollama in you system
-sudo apt update
-sudo apt install deflault-jre
-sudo apt install curl
-curl -fsSL https://ollama.com/install.sh | sh
-ollama pull embeddinggemma
-ollama serve
-```
--->
-Make the changes in the `agent_framework.py` to ensure the correctness of variables. 
-```python
-# Path to your OOPS! request template
-REQUEST_TEMPLATE = "src/templates/oops_request_template.xml"
+MASEO support execution over single set of competency questions with sepcific LLM (CLI Execution) as well as batch run over a selection of models and sets of competency questions over various domains (Batch Execution).
 
-# Path to HermiT JAR inside reason_ontology()
-"java", "-jar", "/path/to/HermiT.jar"
-```
-### Execution Command Line
-
-| Argument | Required | Description |
-|----------|----------|-------------|
-| `--api_key` | Yes | DeepSeek API key |
-| `--cqs_file` | Yes | Path to a JSON file containing the list of competency questions |
-| `--save_file` | Yes | Path where the final OWL ontology will be saved |
-| `--agent_method` | No | `true` runs the full 4-stage pipeline; `false` runs generation only (default: `true`) |
+### CLI Execution
 
 ```bash
-python cli.py \
-    --api_key      YOUR_DEEPSEEK_API_KEY \
-    --cqs_file     dataset/competency_questions/VGO.json \
-    --save_file    dataset/generated_ontology/Gen_VGO.owl \
+python -u cli.py \
+    --config       ./config.yaml \
+    --cqs_file     ./dataset/cqs/wine_cqs.json \
+    --save_file    ./wine.owl \
     --agent_method true
 ```
 
+| Argument | Required | Description |
+| --- | --- | --- |
+| `--config` | Yes | Path to `config.yaml`. Defaults to `./config.yaml`. |
+| `--cqs_file` | Yes | JSON file with competency questions: `[{"id": "CQ1", "value": "..."}, ...]`. |
+| `--save_file` | Yes | Where to write the produced OWL ontology. |
+| `--agent_method` | No | `true` (default) runs the full multi-agent pipeline; `false` runs single-pass generation only. |
 
-### Input File Format
+### Batch Execution
 
-The input file that contains Competency Questions should be a JSON array of strings:
+To sweep multiple models and competency-question files in one command, use `run_batch.py`:
 
-```json
-{
-  "CQ1": "What is the genre of a game?",
-  "CQ2": "Which players have purchased an in-app item?",
-  "CQ3": "What is the username of a player?",
-...
-}
+```bash
+python -u run_batch.py --batch ./batch.yaml
 ```
 
+`batch.yaml` only contains the list of models that you wish to run.
+```yaml
+models:
+  - provider: openrouter
+    id: qwen/qwen3.6-flash
+  - provider: deepseek
+    id: deepseek-chat
+  - provider: ollama
+    id: qwen3:32b
+  ...
+```
 
-### Output File Format
-The internal representation and output format is available at our documentation [TBD]
+Place your competency-question files in `./dataset/cqs/`. For every `(model, cqs_file)` pair the runner invokes MASEO generation (`--agent_method true`) and normal agent generation (`--agent_method false`). All generated ontology and log file will be saved independently.
 
-### Documentation
-Additional documentation of the project is available at https://maseo.readthedocs.io/en/latest/?badge=latest
+
+## Documentation
+
+Additional documentation of the project is available at [readthedocs](https://maseo.readthedocs.io/en/latest/?badge=latest)
+
+- The full document for configuration can be found at: [Configuration](https://maseo.readthedocs.io/en/latest/configuration/)
+- The full document for Input file structure can be found at [Input](https://maseo.readthedocs.io/en/latest/input/)
+- The full document for Output file structure can be found at [Output](https://maseo.readthedocs.io/en/latest/output/)
+
 
 
 ## Acknowledgements
