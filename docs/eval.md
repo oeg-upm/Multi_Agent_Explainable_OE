@@ -98,11 +98,17 @@ Here is an example of the result of  structural analysis:
 
 **Vehicle Census Ontology (VCO)**
 Generated Ontology:
-![VCO_gen](dataset/result/Structural_Analysis/Vehicle_Census/Gen_VCO.png)
+
+<img src="image/Structural_Analysis/Vehicle_Census/Gen_VCO.png" alt="maseo overview" width="500">
 
 Gold Standard Ontology:
 
-![VCO_gold](dataset/result/Structural_Analysis/Vehicle_Census/Gold_VCO.png)
+<img src="image/Structural_Analysis/Vehicle_Census/Gold_VCO.png" alt="maseo overview" width="500">
+<!-- ![VCO_gen](image/Structural_Analysis/Vehicle_Census/Gen_VCO.png)
+
+
+
+![VCO_gold](image/Structural_Analysis/Vehicle_Census/Gold_VCO.png) -->
 
 The full structural analysis of three ontologies:
 
