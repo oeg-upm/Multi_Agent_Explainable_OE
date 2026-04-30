@@ -24,10 +24,15 @@ git clone https://github.com/oeg-upm/maseo.git
 ```
 2. Install the python dependencies:
 ```bash
-pip install agno rdflib requests beautifulsoup4 pydantic
+# thought poetry to manage the env
+poetry install
+source .venv/bin/activate
+# direct install from pypi
+pip install agno rdflib requests beautifulsoup4 pydantic fastapi uvicorn
 ```
 3. To test the MASEO pipeline, run:
 ```bash
+
 cd src/maseo/ # enter the source code folder
 python -u cli.py \
 --config ./config.yaml \
