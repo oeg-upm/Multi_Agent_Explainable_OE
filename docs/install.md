@@ -1,43 +1,42 @@
-## Installation
+# Install
 
-### Python dependencies
+## Requirements
 
-```bash
-pip install agno rdflib requests beautifulsoup4 pydantic
-```
-
-### External tools requirements
+- Python 3.10
+- OpenJKD 11
+  
+### External Requirements Usage:
 
 | Tool | Purpose | Setup |
 |------|---------|-------|
-| [HermiT Reasoner](http://www.hermit-reasoner.com/) | Logical consistency checking | Download `HermiT.jar` and update the path in `reason_ontology()` |
+| [HermiT Reasoner](http://www.hermit-reasoner.com/) | Logical consistency checking | Download `HermiT.jar` |
 | [OOPS! REST API](https://oops.linkeddata.es/) | Ontology pitfall detection | No local setup required — uses the public REST endpoint |
 | Java (JRE 8+) | Required to run HermiT | `sudo apt install default-jre` |
 
-### Configuration
 
-<!-- 
-Before running, update the following constants:
+## Install from Github
 
+To run MASEO project, please see the following steps:
+
+1. Clone the source code:
 ```bash
-# Install java and ollama in you system
-sudo apt update
-sudo apt install deflault-jre
-sudo apt install curl
-curl -fsSL https://ollama.com/install.sh | sh
-ollama pull embeddinggemma
-ollama serve
+git clone https://github.com/oeg-upm/maseo.git
 ```
--->
-Make the changes in the `agent_framework.py` to ensure the correctness of variables. 
-```python
-# Path to your OOPS! request template
-REQUEST_TEMPLATE = "src/templates/oops_request_template.xml"
+2. Install the python dependencies:
+```bash
+pip install agno rdflib requests beautifulsoup4 pydantic
+```
+3. To test the MASEO pipeline, run:
+```bash
+cd src/maseo/ # enter the source code folder
+python -u cli.py \
+--config ./config.yaml \
+--cqs_file ./dataset/cqs/wine_cqs.json \
+--save_file ./dataset/agent/gemma4-26b/ontology/wine_ontology.owl \
+--agent_method true 2>&1 | tee ./dataset/agent/gemma4-26b/log/wine_cq2onto_log.txt
+```
 
-# Path to HermiT JAR inside reason_ontology()
-"java", "-jar", "/path/to/HermiT.jar"
-```
-### Execution Command Line
+cli.py arguments:
 
 | Argument | Required | Description |
 |----------|----------|-------------|
@@ -46,10 +45,3 @@ REQUEST_TEMPLATE = "src/templates/oops_request_template.xml"
 | `--save_file` | Yes | Path where the final OWL ontology will be saved |
 | `--agent_method` | No | `true` runs the full 4-stage pipeline; `false` runs generation only (default: `true`) |
 
-```bash
-python cli.py \
-    --api_key      YOUR_DEEPSEEK_API_KEY \
-    --cqs_file     dataset/competency_questions/VGO.json \
-    --save_file    dataset/generated_ontology/Gen_VGO.owl \
-    --agent_method true
-```
